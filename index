@@ -94,8 +94,8 @@ I to wszystko — zamiast testować 48 wartości (18–65), testujesz 3.<br>
 ⭐ Drugi przykład — bardziej „życiowy”<br>
 Wymaganie:<br>
 
-Pole „kwota przelewu” przyjmuje wartości od 1 do 10 000 PLN.
-Wartość musi być liczbą całkowitą.
+Pole „kwota przelewu” przyjmuje wartości od 1 do 10 000 PLN.<br>
+Wartość musi być liczbą całkowitą.<br>
 
 Klasy:
 Poprawna liczba całkowita 1–10 000
