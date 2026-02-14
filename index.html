@@ -1099,6 +1099,171 @@ Podczas testów odhacza każdy punkt.
   <li><strong>2.</strong> A: Bo niektóre punkty tracą skuteczność, a pojawiają się nowe defekty</li>
   <li><strong>3.</strong> D: Pytania, wymagania, typowe problemy</li>
 </ul>
+<h2>4.5 Podejścia do testowania oparte na współpracy</h2>
+
+<p>
+Techniki z poprzednich sekcji (4.2, 4.3, 4.4) skupiają się na wykrywaniu defektów. 
+Podejścia oparte na współpracy koncentrują się również na <strong>zapobieganiu defektom</strong> 
+poprzez komunikację, wspólne zrozumienie wymagań i współpracę między interesariuszami.
+</p>
+
+<hr>
+
+<!-- 4.5.1 -->
+<h3>4.5.1 Wspólne pisanie historyjek użytkownika</h3>
+
+<p>
+Historyjka użytkownika opisuje funkcję systemu wartościową dla użytkownika. 
+Aby była zrozumiała i testowalna, stosuje się koncepcję <strong>3C</strong>:
+</p>
+
+<ul>
+  <li><strong>Card</strong> – karta z opisem historyjki,</li>
+  <li><strong>Conversation</strong> – rozmowa wyjaśniająca szczegóły,</li>
+  <li><strong>Confirmation</strong> – kryteria akceptacji.</li>
+</ul>
+
+<p>
+Najczęstszy format historyjki:
+</p>
+
+<pre>
+Jako [rola] chcę [cel], aby [wartość biznesowa].
+</pre>
+
+<p>
+Wspólne pisanie historyjek (biznes + programiści + testerzy) pozwala uniknąć niejasności, 
+doprecyzować wymagania i upewnić się, że historyjka jest zgodna z zasadą <strong>INVEST</strong>:
+</p>
+
+<ul>
+  <li>Independent</li>
+  <li>Negotiable</li>
+  <li>Valuable</li>
+  <li>Estimable</li>
+  <li>Small</li>
+  <li>Testable</li>
+</ul>
+
+<h4>Przykład</h4>
+<p>
+Zespół tworzy historyjkę:  
+„Jako klient chcę otrzymać e‑mail potwierdzający zamówienie, aby mieć dowód zakupu.”  
+Tester proponuje doprecyzowanie: co jeśli e‑mail nie dojdzie? co jeśli adres jest błędny?  
+Dzięki temu historyjka staje się pełniejsza i testowalna.
+</p>
+
+<h4>Pytania ABCD</h4>
+<ol>
+  <li>Co oznacza litera C w koncepcji 3C?</li>
+  <li>Co oznacza litera T w zasadzie INVEST?</li>
+  <li>Jaki jest cel wspólnego pisania historyjek użytkownika?</li>
+</ol>
+
+<h4>Odpowiedzi</h4>
+<ul>
+  <li><strong>1.</strong> B: Conversation</li>
+  <li><strong>2.</strong> D: Testable</li>
+  <li><strong>3.</strong> A: Doprecyzowanie wymagań i uniknięcie niejasności</li>
+</ul>
+
+<hr>
+
+<!-- 4.5.2 -->
+<h3>4.5.2 Kryteria akceptacji</h3>
+
+<p>
+Kryteria akceptacji to warunki, które muszą zostać spełnione, aby historyjka użytkownika została uznana za ukończoną. 
+Są one traktowane jako <strong>warunki testowe</strong>.
+</p>
+
+<p>
+Cele kryteriów akceptacji:
+</p>
+
+<ul>
+  <li>określenie zakresu historyjki,</li>
+  <li>osiągnięcie wspólnego zrozumienia,</li>
+  <li>opisanie scenariuszy pozytywnych i negatywnych,</li>
+  <li>podstawa do testów akceptacyjnych,</li>
+  <li>ułatwienie planowania i szacowania.</li>
+</ul>
+
+<p>
+Najpopularniejsze formaty:
+</p>
+
+<ul>
+  <li><strong>Given / When / Then</strong> – scenariuszowy,</li>
+  <li><strong>Lista reguł</strong> – tabelaryczne przypisanie wejść do wyjść.</li>
+</ul>
+
+<h4>Przykład</h4>
+
+<p><strong>Given</strong> użytkownik jest zalogowany  
+<br><strong>When</strong> dodaje produkt do koszyka  
+<br><strong>Then</strong> koszyk powinien pokazać nową pozycję
+</p>
+
+<h4>Pytania ABCD</h4>
+<ol>
+  <li>Jaką rolę pełnią kryteria akceptacji?</li>
+  <li>Który format jest scenariuszowy?</li>
+  <li>Dlaczego kryteria akceptacji pomagają w planowaniu?</li>
+</ol>
+
+<h4>Odpowiedzi</h4>
+<ul>
+  <li><strong>1.</strong> C: Określają warunki, które muszą być spełnione</li>
+  <li><strong>2.</strong> A: Given/When/Then</li>
+  <li><strong>3.</strong> D: Bo precyzują zakres i oczekiwane zachowania</li>
+</ul>
+
+<hr>
+
+<!-- 4.5.3 -->
+<h3>4.5.3 Wytwarzanie sterowane testami akceptacyjnymi (ATDD)</h3>
+
+<p>
+ATDD to podejście „najpierw test”, w którym przypadki testowe tworzy się <strong>przed implementacją</strong> historyjki użytkownika.  
+Testy tworzą wspólnie: klienci, programiści i testerzy.
+</p>
+
+<p>
+Proces ATDD:
+</p>
+
+<ol>
+  <li>warsztaty — doprecyzowanie historyjki i kryteriów akceptacji,</li>
+  <li>tworzenie testów akceptacyjnych,</li>
+  <li>implementacja funkcjonalności,</li>
+  <li>wykonywanie testów (manualnie lub automatycznie).</li>
+</ol>
+
+<p>
+Pierwsze testy są zwykle pozytywne, potem dodaje się testy negatywne i niefunkcjonalne.
+</p>
+
+<h4>Przykład</h4>
+<p>
+Zespół tworzy test akceptacyjny:  
+„Użytkownik może zresetować hasło, jeśli poda poprawny e‑mail.”  
+Dopiero potem programista implementuje funkcję resetu hasła.
+</p>
+
+<h4>Pytania ABCD</h4>
+<ol>
+  <li>Co jest charakterystyczne dla ATDD?</li>
+  <li>Kto tworzy testy akceptacyjne w ATDD?</li>
+  <li>Jakie testy tworzy się jako pierwsze?</li>
+</ol>
+
+<h4>Odpowiedzi</h4>
+<ul>
+  <li><strong>1.</strong> B: Testy powstają przed implementacją</li>
+  <li><strong>2.</strong> C: Klienci, programiści i testerzy</li>
+  <li><strong>3.</strong> A: Testy pozytywne</li>
+</ul>
 
 </div>
 </script>
