@@ -762,6 +762,197 @@ Idle --enter_pin_ok--> (niepoprawne przejście)
     <strong>3.</strong> System wróci do stanu <strong>Idle</strong> (błędny PIN powoduje odrzucenie karty).
   </li>
 </ul>
+<h2>4.3 Białoskrzynkowe techniki testowania</h2>
+
+<p>
+Techniki białoskrzynkowe polegają na projektowaniu testów na podstawie <strong>struktury kodu</strong>. 
+Tester zna wewnętrzną logikę programu i tworzy przypadki testowe tak, aby pokryć określone elementy kodu.
+</p>
+
+<p>
+W sylabusie skupiamy się na dwóch podstawowych technikach:
+</p>
+
+<ul>
+  <li><strong>Testowanie instrukcji</strong></li>
+  <li><strong>Testowanie gałęzi</strong></li>
+</ul>
+
+<p>
+Istnieją bardziej zaawansowane techniki (np. pokrycie ścieżek, pokrycie warunków, pokrycie decyzji), 
+ale nie są one wymagane na poziomie podstawowym ISTQB.
+</p>
+
+<hr>
+
+<!-- 4.3.1 -->
+<h3>4.3.1 Testowanie instrukcji i pokrycie instrukcji kodu</h3>
+
+<p>
+W testowaniu instrukcji elementami pokrycia są <strong>wszystkie wykonywalne instrukcje</strong> w kodzie. 
+Celem jest wykonanie każdej instrukcji przynajmniej raz.
+</p>
+
+<p>
+Pokrycie instrukcji mierzy się jako:
+</p>
+
+<pre>
+pokrycie = (liczba wykonanych instrukcji / liczba wszystkich instrukcji) × 100%
+</pre>
+
+<p>
+100% pokrycia instrukcji oznacza, że każda linia kodu została wykonana, ale <strong>nie oznacza</strong>, 
+że przetestowano wszystkie możliwe ścieżki logiczne.
+</p>
+
+<h4>Przykład</h4>
+
+<pre>
+1: x = 10
+2: if (x > 5):
+3:     print("duże")
+4: print("koniec")
+</pre>
+
+<p>
+Test: x = 10  
+Pokryte instrukcje: 1, 2, 3, 4 → pokrycie 100%.
+</p>
+
+<p>
+Ale nie sprawdziliśmy przypadku, gdy warunek jest fałszywy — dlatego logika nie została w pełni przetestowana.
+</p>
+
+<h4>Pytania testowe</h4>
+
+<ol>
+  <li>Co jest elementem pokrycia w testowaniu instrukcji?</li>
+  <li>Czy 100% pokrycia instrukcji gwarantuje pełne przetestowanie logiki?</li>
+  <li>Dlaczego testowanie instrukcji może nie wykryć wszystkich defektów?</li>
+</ol>
+
+<h4>Odpowiedzi i wyjaśnienia</h4>
+
+<ul>
+  <li><strong>1.</strong> Wszystkie wykonywalne instrukcje w kodzie.</li>
+  <li><strong>2.</strong> Nie — bo nie sprawdza wszystkich gałęzi i ścieżek.</li>
+  <li><strong>3.</strong> Bo niektóre defekty ujawniają się tylko przy konkretnych danych lub ścieżkach.</li>
+</ul>
+
+<hr>
+
+<!-- 4.3.2 -->
+<h3>4.3.2 Testowanie gałęzi i pokrycie gałęzi</h3>
+
+<p>
+Gałąź to możliwy przepływ sterowania w kodzie — np. wynik decyzji <strong>IF</strong>, wybór w <strong>SWITCH</strong>, 
+lub przejście w pętli.  
+W testowaniu gałęzi elementami pokrycia są <strong>wszystkie gałęzie</strong> (zarówno „prawda”, jak i „fałsz”).
+</p>
+
+<p>
+Pokrycie gałęzi mierzy się jako:
+</p>
+
+<pre>
+pokrycie = (liczba wykonanych gałęzi / liczba wszystkich gałęzi) × 100%
+</pre>
+
+<p>
+100% pokrycia gałęzi oznacza, że wykonano wszystkie możliwe przejścia sterowania.  
+Pokrycie gałęzi <strong>subsumuje</strong> pokrycie instrukcji — czyli jeśli masz 100% gałęzi, masz też 100% instrukcji.
+</p>
+
+<h4>Przykład</h4>
+
+<pre>
+1: if (x > 5):
+2:     print("duże")
+3: else:
+4:     print("małe")
+</pre>
+
+<p>
+Gałęzie:
+</p>
+
+<ul>
+  <li>warunek TRUE → linia 2</li>
+  <li>warunek FALSE → linia 4</li>
+</ul>
+
+<p>
+Aby mieć 100% pokrycia gałęzi, potrzebujesz dwóch testów:
+</p>
+
+<ul>
+  <li>x = 10 → TRUE</li>
+  <li>x = 3 → FALSE</li>
+</ul>
+
+<h4>Pytania testowe</h4>
+
+<ol>
+  <li>Co jest elementem pokrycia w testowaniu gałęzi?</li>
+  <li>Ile testów potrzeba, aby pokryć gałęzie w instrukcji IF/ELSE?</li>
+  <li>Czy pokrycie gałęzi gwarantuje pokrycie instrukcji?</li>
+</ol>
+
+<h4>Odpowiedzi i wyjaśnienia</h4>
+
+<ul>
+  <li><strong>1.</strong> Wszystkie gałęzie przepływu sterowania (TRUE/FALSE, CASE itp.).</li>
+  <li><strong>2.</strong> Minimum dwa — jeden dla TRUE, jeden dla FALSE.</li>
+  <li><strong>3.</strong> Tak — pokrycie gałęzi subsumuje pokrycie instrukcji.</li>
+</ul>
+
+<hr>
+
+<!-- 4.3.3 -->
+<h3>4.3.3 Korzyści wynikające z testowania białoskrzynkowego</h3>
+
+<p>
+Techniki białoskrzynkowe pozwalają testować <strong>rzeczywistą implementację</strong>, a nie tylko wymagania. 
+Dzięki temu można wykryć defekty, które nie wynikają z błędnych wymagań, ale z błędów programisty.
+</p>
+
+<p>
+Zalety:
+</p>
+
+<ul>
+  <li>umożliwia wykrycie defektów w logice kodu,</li>
+  <li>pozwala zmierzyć rzeczywiste pokrycie kodu,</li>
+  <li>pomaga wykryć pominięcia w implementacji,</li>
+  <li>przydatne w przeglądach kodu i analizie pseudokodu.</li>
+</ul>
+
+<p>
+Wady:
+</p>
+
+<ul>
+  <li>nie wykryje brakujących wymagań (bo kod ich nie zawiera),</li>
+  <li>wymaga znajomości kodu,</li>
+  <li>może być czasochłonne.</li>
+</ul>
+
+<h4>Pytania testowe</h4>
+
+<ol>
+  <li>Jaka jest główna zaleta technik białoskrzynkowych?</li>
+  <li>Dlaczego testowanie białoskrzynkowe może nie wykryć brakujących wymagań?</li>
+  <li>Co oznacza, że pokrycie gałęzi subsumuje pokrycie instrukcji?</li>
+</ol>
+
+<h4>Odpowiedzi i wyjaśnienia</h4>
+
+<ul>
+  <li><strong>1.</strong> Pozwalają testować rzeczywistą implementację i logikę kodu.</li>
+  <li><strong>2.</strong> Bo testy opierają się na kodzie, a nie na wymaganiach — jeśli czegoś nie ma w kodzie, nie zostanie przetestowane.</li>
+  <li><strong>3.</strong> Jeśli masz 100% pokrycia gałęzi, automatycznie masz 100% pokrycia instrukcji.</li>
+</ul>
 
 </div>
 </script>
