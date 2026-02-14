@@ -114,85 +114,6 @@ Przykładowe wartości:<br>
 
 „abc”<br>
 
-Dzisiaj
-Twoja wypowiedź
-mordo ogolnie ucze sie na istqb
-Copilot powiedział
-Super, że się uczysz do ISTQB! Jeśli chcesz, mogę Ci pomóc ogarnąć materiał tak, żeby nauka była lżejsza i bardziej skuteczna. Widzę, że masz otwarty sylabus ISTQB Foundation Level v4.0.1 — to świetny punkt startowy.
-
-Jak mogę Ci pomóc teraz?
-Mogę na przykład:
-
-wyjaśnić dowolny temat z sylabusa prostym językiem,
-
-zrobić mini‑quiz, żebyś sprawdziła, co już umiesz,
-
-przygotować ściągę z najważniejszymi pojęciami,
-
-pomóc ułożyć plan nauki,
-
-streścić fragment dokumentu, który właśnie czytasz.
-
-Powiedz tylko, czego potrzebujesz — czy chcesz zacząć od konkretnego rozdziału, czy może wolisz ogólny przegląd ISTQB Foundation?
-
-
-
-
-
-
-Twoja wypowiedź
-strasznie niefajny jest ten sylabius bo nie ma przykladow i jezyk jest dziwny, niezrozumialy...stresc mi to i podaj przyklad 4.2. Czarnoskrzynkowe techniki testowania 
-W kolejnych sekcjach omówione zostały następujące powszechnie stosowane czarnoskrzynkowe techniki 
-testowania: 
-● podział na klasy równoważności; 
-● analiza wartości brzegowych; 
-● testowanie w oparciu o tablicę decyzyjną; 
-● testowanie przejść pomiędzy stanami. 
-4.2.1. Podział na klasy równoważności 
-Technika podziału na klasy równoważności polega na dzieleniu danych na klasy (zwane klasami 
-równoważności) zgodnie z założeniem, że każda klasa będzie zawierała elementy, które mają być 
-przetwarzane przez przedmiot testów w ten sam sposób. U podstaw tej techniki leży teoria, zgodnie z którą 
-jeśli przypadek testowy służący do testowania jednej wartości z klasy równoważności wykryje defekt, to 
-defekt ten powinien również zostać wykryty przez przypadki testowe służące do testowania każdej innej 
-wersja 4.0.1 
-Strona 46 z 91 
-© International Software Testing Qualifications Board  
-07.05.2025 
-© Stowarzyszenie Jakości Systemów Informatycznych 
-Certyfikowany tester 
-Poziom podstawowy 
-wartości należącej do tej samej klasy. Oznacza to, że wystarczające jest utworzenie jednego testu 
-w odniesieniu do każdej z klas.  
-Klasy równoważności można wyznaczać w odniesieniu do wszelkich elementów danych, które są związane 
-z przedmiotem testów, takich jak: dane wejściowe, dane wyjściowe, elementy konfiguracji, wartości 
-wewnętrzne, wartości zależne od czasu oraz parametry interfejsu. Klasy mogą być ciągłe lub dyskretne, 
-uporządkowane lub nieuporządkowane oraz skończone lub nieskończone, nie mogą natomiast nakładać 
-się na siebie ani być pustymi zbiorami. 
-W przypadku prostych elementów testowych podział na klasy równoważności nie sprawia zwykle trudności, 
-ale w praktyce zrozumienie tego, jak dany obiekt testowy będzie traktować poszczególne wartości, bywa 
-skomplikowane. Z tego powodu przy dokonywaniu podziału należy zachować ostrożność. 
-Klasa równoważności zawierająca poprawne wartości jest nazywana poprawną klasą równoważności, 
-a klasa zawierająca wartości niepoprawne — niepoprawną klasą równoważności. Definicje wartości 
-poprawnych i niepoprawnych mogą przy tym różnić się w zależności od zespołu lub organizacji. Za wartości 
-poprawne mogą być na przykład uważane takie, które powinny być przetwarzane przez przedmiot testów, 
-lub takie, w przypadku których sposób przetwarzania określa specyfikacja. Z kolei za wartości niepoprawne 
-mogą być uznawane wartości, które przedmiot testów powinien zignorować lub odrzucić, bądź wartości, 
-w odniesieniu do których w specyfikacji przedmiotu testów nie zdefiniowano sposobu przetwarzania. 
-W przypadku podziału na klasy równoważności elementami pokrycia są klasy równoważności. Warunkiem 
-uzyskania stuprocentowego pokrycia przy korzystaniu z tej techniki jest sprawdzenie za pomocą 
-przypadków testowych wszystkich zidentyfikowanych klas (w tym klas niepoprawnych) poprzez pokrycie 
-każdej klasy co najmniej raz. Pokrycie mierzy się jako iloraz liczby klas sprawdzonych za pomocą co 
-najmniej jednego przypadku testowego przez łączną liczbę zidentyfikowanych klas, a uzyskaną wartość 
-wyraża się w procentach. 
-W wielu elementach testowych występuje po kilka zbiorów klas (przykładem mogą być elementy testowe 
-mające więcej niż jeden parametr wejściowy), co oznacza, że przypadek testowy będzie pokrywać klasy 
-należące do kilku różnych zbiorów. Najprostszym kryterium pokrycia w przypadku występowania wielu 
-zbiorów klas jest pokrycie typu „każdy wybór” (ang. each choice) (Ammann 2016). Wymaga ono, aby 
-przypadki testowe sprawdzały każdą klasę z każdego zbioru klas co najmniej raz. Pokrycie to nie 
-uwzględnia kombinacji klas.
-Copilot powiedział
-Jasne, Anna — już tłumaczę to po ludzku i z przykładami, tak żebyś naprawdę zrozumiała, a nie tylko „wykuła”.
-Poniżej masz streszczenie + konkretny przykład, który od razu pokazuje, jak działa podział na klasy równoważności.
 
 ⭐ 4.2 Czarnoskrzynkowe techniki testowania — o co chodzi?
 To są techniki, w których nie interesuje nas kod, tylko zachowanie systemu na podstawie wejść i wyjść.
@@ -296,41 +217,19 @@ Przykładowe wartości:
 
 „abc”
 
-⭐ Chcesz, żebym streściła Ci też 4.2.2, 4.2.3 i 4.2.4?
-Albo mogę zrobić Ci quiz z klas równoważności, żebyś od razu utrwaliła.
 
 
 
 
 
 
-Twoja wypowiedź
-po koleim mordus, bede to czytac potem pytac ciebie,m aby nam sie utwalilo co?
-Copilot powiedział
-Jasne, Anna — możemy iść po kolei, spokojnie, krok po kroku. Ty czytasz, pytasz, a ja tłumaczę tak, żeby to naprawdę weszło w głowę. To jest najlepszy sposób nauki: małe porcje + szybkie wyjaśnienia + przykłady.
-
-Brzmi jak dobry plan.
-
-Jeśli chcesz, możemy działać tak:
-
-✔️ Ty: czytasz fragment sylabusa
-✔️ Ja: tłumaczę go po ludzku, robię przykłady, a potem króciutki quiz
-✔️ Ty: odpowiadasz, a ja sprawdzam i wyjaśniam
-To jest turbo‑skuteczne, bo od razu utrwalasz.
-
-Daj znać, kiedy przeczytasz kolejny fragment i chcesz go omówić. Możemy iść rozdział po rozdziale, albo sekcja po sekcji — jak Ci wygodniej.
 
 
 
 
 
 
-Twoja wypowiedź
-Pokrycie mierzy się jako iloraz liczby klas sprawdzonych za pomocą co 
-najmniej jednego przypadku testowego przez łączną liczbę zidentyfikowanych klas, a uzyskaną wartość 
-wyraża się w procentach.
-Copilot powiedział
-Jasne, Anna — to zdanie jest dużo prostsze, niż wygląda w sylabusie. Już tłumaczę tak, żeby było intuicyjnie.
+
 
 ⭐ Co to znaczy?
 Pokrycie klas równoważności to po prostu informacja, ile z utworzonych klas zostało przetestowanych.
