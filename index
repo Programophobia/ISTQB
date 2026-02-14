@@ -13,86 +13,86 @@
     <link rel="icon" href="/images/150252110.png">
 </head>
 <body>
-   <div>⭐ 4.2 Czarnoskrzynkowe techniki testowania — o co chodzi?
+   <div>⭐ 4.2 Czarnoskrzynkowe techniki testowania — o co chodzi?<br>
 To są techniki, w których nie interesuje nas kod, tylko zachowanie systemu na podstawie wejść i wyjść.
-W tej sekcji ISTQB omawia 4 najpopularniejsze techniki:
+W tej sekcji ISTQB omawia 4 najpopularniejsze techniki:<br>
 
-podział na klasy równoważności
+podział na klasy równoważności<br>
 
-analiza wartości brzegowych
+analiza wartości brzegowych<br>
 
-tablice decyzyjne
+tablice decyzyjne<br>
 
-testowanie przejść między stanami
+testowanie przejść między stanami<br>
 
-Ty chcesz 4.2.1 — podział na klasy równoważności, więc lecimy.
+Ty chcesz 4.2.1 — podział na klasy równoważności, więc lecimy.<br>
 
-⭐ 4.2.1 Podział na klasy równoważności — streszczenie po ludzku
-To jedna z najprostszych i najczęściej używanych technik.
+⭐ 4.2.1 Podział na klasy równoważności — streszczenie po ludzku<br>
+To jedna z najprostszych i najczęściej używanych technik.<br>
 
 🔍 O co chodzi?
 Zamiast testować każdą możliwą wartość wejściową, dzielisz dane na grupy (klasy), w których system zachowuje się tak samo.
-Zakładamy, że:
+Zakładamy, że:<br>
 
-Jeśli jedna wartość z klasy wykryje błąd, to każda inna z tej klasy też by go wykryła.
+Jeśli jedna wartość z klasy wykryje błąd, to każda inna z tej klasy też by go wykryła.<br>
 
-Dlatego z każdej klasy wybierasz tylko jeden test.
+Dlatego z każdej klasy wybierasz tylko jeden test.<br>
 
-🔍 Jakie mogą być klasy?
-poprawne (system powinien je przyjąć)
+🔍 Jakie mogą być klasy?<br>
+poprawne (system powinien je przyjąć)<br>
 
-niepoprawne (system powinien je odrzucić / zgłosić błąd)
+niepoprawne (system powinien je odrzucić / zgłosić błąd)<br>
 
-Klasy nie mogą:
+Klasy nie mogą:<br>
 
-na siebie nachodzić
+na siebie nachodzić<br>
 
-być puste
+być puste<br>
 
-🔍 Co można dzielić na klasy?
-Wszystko, co jest danymi:
+🔍 Co można dzielić na klasy?<br>
+Wszystko, co jest danymi:<br>
 
-wejścia (np. wiek, kwota, login)
+wejścia (np. wiek, kwota, login)<br>
 
-wyjścia
+wyjścia<br>
 
-konfiguracje
+konfiguracje<br>
 
-wartości zależne od czasu
+wartości zależne od czasu<br>
 
-parametry interfejsu
+parametry interfejsu<br>
 
-🔍 Kiedy masz wiele parametrów?
-Każdy parametr ma swój zestaw klas.
-Najprostsze kryterium pokrycia to each choice — każda klasa z każdego parametru musi być przetestowana przynajmniej raz.
+🔍 Kiedy masz wiele parametrów?<br>
+Każdy parametr ma swój zestaw klas.<br>
+Najprostsze kryterium pokrycia to each choice — każda klasa z każdego parametru musi być przetestowana przynajmniej raz.<br>
 
-⭐ Przykład — najprostszy i najbardziej ISTQB‑owy
-Załóżmy, że testujesz pole „wiek” w formularzu.
-Wymaganie:
+⭐ Przykład — najprostszy i najbardziej ISTQB‑owy<br>
+Załóżmy, że testujesz pole „wiek” w formularzu.<br>
+Wymaganie:<br>
 
-System akceptuje wiek od 18 do 65 lat.
+System akceptuje wiek od 18 do 65 lat.<br>
 
-1️⃣ Tworzymy klasy równoważności
-Typ klasy	Zakres	Opis
-Poprawna	18–65	Wiek prawidłowy
-Niepoprawna		Za młody
-Niepoprawna	>65	Za stary
-2️⃣ Wybieramy po jednym przykładzie z każdej klasy
-z klasy poprawnej → np. 30
+1️⃣ Tworzymy klasy równoważności<br>
+Typ klasy	Zakres	Opis<br>
+Poprawna	18–65	Wiek prawidłowy<br>
+Niepoprawna		Za młody<br>
+Niepoprawna	>65	Za stary<br>
+2️⃣ Wybieramy po jednym przykładzie z każdej klasy<br>
+z klasy poprawnej → np. 30<br>
+<br>
+z klasy niepoprawnej (za młody) → 10<br>
 
-z klasy niepoprawnej (za młody) → 10
+z klasy niepoprawnej (za stary) → 80<br>
 
-z klasy niepoprawnej (za stary) → 80
+3️⃣ Tworzymy przypadki testowe<br>
+Test	Wartość	Oczekiwany wynik<br>
+1	30	Formularz akceptuje<br>
+2	10	Błąd: wiek za niski<br>
+3	80	Błąd: wiek za wysoki<br>
+I to wszystko — zamiast testować 48 wartości (18–65), testujesz 3.<br>
 
-3️⃣ Tworzymy przypadki testowe
-Test	Wartość	Oczekiwany wynik
-1	30	Formularz akceptuje
-2	10	Błąd: wiek za niski
-3	80	Błąd: wiek za wysoki
-I to wszystko — zamiast testować 48 wartości (18–65), testujesz 3.
-
-⭐ Drugi przykład — bardziej „życiowy”
-Wymaganie:
+⭐ Drugi przykład — bardziej „życiowy”<br>
+Wymaganie:<br>
 
 Pole „kwota przelewu” przyjmuje wartości od 1 do 10 000 PLN.
 Wartość musi być liczbą całkowitą.
