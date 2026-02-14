@@ -531,6 +531,131 @@ Interpretacja: rabat jest przyznawany, jeśli spełniony jest przynajmniej jeden
     <strong>3.</strong> Elementem pokrycia są <strong>kolumny</strong> zawierające możliwe do spełnienia kombinacje warunków.
   </li>
 </ul>
+<h2>4.2.4 Testowanie przejść pomiędzy stanami</h2>
+
+<p>
+Testowanie przejść pomiędzy stanami polega na analizie, jak system zmienia swój stan w odpowiedzi 
+na różne zdarzenia. Do modelowania zachowania systemu używa się <strong>diagramów stanów</strong> lub 
+<strong>tablic stanów</strong>. Każdy stan reprezentuje określoną sytuację systemu, a przejścia pokazują, jak 
+system reaguje na zdarzenia.
+</p>
+
+<p>
+Przejście ma zwykle postać: <strong>zdarzenie [warunek] / akcja</strong>.  
+Warunek i akcja mogą być pominięte, jeśli nie są istotne.
+</p>
+
+<p>
+Tablica stanów jest alternatywną formą diagramu.  
+Wiersze = stany, kolumny = zdarzenia.  
+Komórki = wynik przejścia (stan docelowy + ewentualna akcja).  
+Puste komórki oznaczają <strong>niepoprawne przejścia</strong>.
+</p>
+
+<p>
+Przypadki testowe w tej technice to sekwencje zdarzeń, które powodują przejścia między stanami. 
+Jeden test może pokrywać wiele przejść.
+</p>
+
+<hr>
+
+<h3>Kryteria pokrycia</h3>
+
+<ul>
+  <li><strong>Pokrycie wszystkich stanów</strong> – testy muszą odwiedzić każdy stan przynajmniej raz.</li>
+  <li><strong>Pokrycie poprawnych przejść (0-przełączeń)</strong> – testy muszą wykonać każde poprawne przejście.</li>
+  <li><strong>Pokrycie wszystkich przejść</strong> – testy muszą wykonać wszystkie poprawne przejścia oraz podjąć próbę wykonania przejść niepoprawnych.</li>
+</ul>
+
+<p>
+Pokrycie wszystkich przejść jest najsilniejszym kryterium, ponieważ obejmuje zarówno stany, jak i przejścia poprawne oraz niepoprawne.
+</p>
+
+<hr>
+
+<h3>Przykład</h3>
+
+<p>
+System drzwi automatycznych ma trzy stany:
+</p>
+
+<ul>
+  <li><strong>Zamknięte</strong></li>
+  <li><strong>Otwieranie</strong></li>
+  <li><strong>Otwarte</strong></li>
+</ul>
+
+<p>
+Zdarzenia:
+</p>
+
+<ul>
+  <li><strong>sensor</strong> – wykryto osobę</li>
+  <li><strong>timeout</strong> – minął czas otwarcia</li>
+</ul>
+
+<p>Tablica stanów:</p>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Stan</th>
+    <th>sensor</th>
+    <th>timeout</th>
+  </tr>
+  <tr>
+    <td>Zamknięte</td>
+    <td>Otwieranie</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Otwieranie</td>
+    <td>Otwarte</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Otwarte</td>
+    <td></td>
+    <td>Zamknięte</td>
+  </tr>
+</table>
+
+<p>
+Przykładowa sekwencja testowa pokrywająca wszystkie poprawne przejścia:
+</p>
+
+<pre>
+Zamknięte --sensor--> Otwieranie --sensor--> Otwarte --timeout--> Zamknięte
+</pre>
+
+<hr>
+
+<h3>Pytania testowe</h3>
+
+<ol>
+  <li>
+    Co oznacza pusta komórka w tablicy stanów?
+  </li>
+  <li>
+    Które kryterium pokrycia jest najsilniejsze?
+  </li>
+  <li>
+    Co jest elementem pokrycia w kryterium „pokrycie poprawnych przejść”?
+  </li>
+</ol>
+
+<h3>Odpowiedzi i wyjaśnienia</h3>
+
+<ul>
+  <li>
+    <strong>1.</strong> Pusta komórka oznacza <strong>niepoprawne przejście</strong>, którego system nie powinien wykonywać.
+  </li>
+  <li>
+    <strong>2.</strong> <strong>Pokrycie wszystkich przejść</strong> – obejmuje stany, przejścia poprawne i próby przejść niepoprawnych.
+  </li>
+  <li>
+    <strong>3.</strong> Elementem pokrycia są <strongwszystkie poprawne przejścia</strong> między stanami.
+  </li>
+</ul>
 
 </div>
 </script>
