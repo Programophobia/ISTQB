@@ -96,24 +96,23 @@ Wymaganie:<br>
 
 Pole „kwota przelewu” przyjmuje wartości od 1 do 10 000 PLN.<br>
 Wartość musi być liczbą całkowitą.<br>
+<br>
+Klasy:<br>
+Poprawna liczba całkowita 1–10 000<br>
+<br>
+Niepoprawna — liczba <1<br>
 
-Klasy:
-Poprawna liczba całkowita 1–10 000
+Niepoprawna — liczba >10 000<br>
 
-Niepoprawna — liczba <1
+Niepoprawna — nie‑liczba (np. tekst, puste pole)<br>
 
-Niepoprawna — liczba >10 000
+Przykładowe wartości:<br>
+500<br>
 
-Niepoprawna — nie‑liczba (np. tekst, puste pole)
 
-Przykładowe wartości:
-500
+20 000<br>
 
-0
-
-20 000
-
-„abc”</div>
+„abc”</div><br>
 </script>
     <script src="/navigation.js"></script>
 <script src="/main.js"></script>
