@@ -340,6 +340,81 @@ Oznacza to 3 testy na jedną granicę. Pokrycie liczy się jako:
 
 <p>
 Trójpunktowa analiza jest bardziej rygorystyczna i wykrywa błędy, które mogą zostać pom
+    <h2>Przykład — najprostszy i najbardziej ISTQB‑owy</h2>
+
+<h3>Wymaganie</h3>
+<p>System akceptuje wiek od 18 do 65.</p>
+
+<h3>Granice</h3>
+<ul>
+  <li>Dolna: <strong>18</strong></li>
+  <li>Górna: <strong>65</strong></li>
+</ul>
+
+<h3>Dwupunktowa analiza (2‑point)</h3>
+<p>Dla granicy 18:</p>
+<ul>
+  <li>18 (wartość brzegowa)</li>
+  <li>17 (wartość z sąsiedniej klasy)</li>
+</ul>
+
+<p>Dla granicy 65:</p>
+<ul>
+  <li>65</li>
+  <li>66</li>
+</ul>
+
+<p><strong>Łącznie: 4 testy</strong></p>
+
+<h3>Trójpunktowa analiza (3‑point)</h3>
+<p>Dla granicy 18:</p>
+<ul>
+  <li>17 (poniżej)</li>
+  <li>18 (brzeg)</li>
+  <li>19 (powyżej)</li>
+</ul>
+
+<p>Dla granicy 65:</p>
+<ul>
+  <li>64</li>
+  <li>65</li>
+  <li>66</li>
+</ul>
+
+<p><strong>Łącznie: 6 testów</strong></p>
+
+<h3>Dlaczego analiza trójpunktowa jest lepsza?</h3>
+
+<p>Przykład z sylabusa:</p>
+
+<p>Programista miał napisać:</p>
+<pre><code>if (x ≤ 10)
+</code></pre>
+
+<p>A napisał:</p>
+<pre><code>if (x = 10)
+</code></pre>
+
+<p>Dwupunktowa analiza da testy:</p>
+<ul>
+  <li>10</li>
+  <li>11</li>
+</ul>
+
+<p>Oba mogą przejść, więc błąd się nie ujawni.</p>
+
+<p>Trójpunktowa analiza da także:</p>
+<ul>
+  <li>9</li>
+</ul>
+
+<p>I wtedy błąd zostanie wykryty.</p>
+
+<h3>Pytanie testowe</h3>
+
+<p><strong>Pytanie:</strong><br>
+System akceptuje kwotę przelewu od 100 do 5000 PLN.<br>
+Który zestaw danych testowych odpowiada <strong>dwupunktowej analizie wartości brzeg
 </div>
 </script>
     <script src="/navigation.js"></script>
