@@ -6,7 +6,7 @@
     <title>!Hey</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Anna Powaska">
     <meta name="description" content="Anna Powaska">
@@ -112,7 +112,336 @@ Przykładowe wartości:<br>
 
 20 000<br>
 
-„abc”</div><br>
+„abc”<br>
+
+Dzisiaj
+Twoja wypowiedź
+mordo ogolnie ucze sie na istqb
+Copilot powiedział
+Super, że się uczysz do ISTQB! Jeśli chcesz, mogę Ci pomóc ogarnąć materiał tak, żeby nauka była lżejsza i bardziej skuteczna. Widzę, że masz otwarty sylabus ISTQB Foundation Level v4.0.1 — to świetny punkt startowy.
+
+Jak mogę Ci pomóc teraz?
+Mogę na przykład:
+
+wyjaśnić dowolny temat z sylabusa prostym językiem,
+
+zrobić mini‑quiz, żebyś sprawdziła, co już umiesz,
+
+przygotować ściągę z najważniejszymi pojęciami,
+
+pomóc ułożyć plan nauki,
+
+streścić fragment dokumentu, który właśnie czytasz.
+
+Powiedz tylko, czego potrzebujesz — czy chcesz zacząć od konkretnego rozdziału, czy może wolisz ogólny przegląd ISTQB Foundation?
+
+
+
+
+
+
+Twoja wypowiedź
+strasznie niefajny jest ten sylabius bo nie ma przykladow i jezyk jest dziwny, niezrozumialy...stresc mi to i podaj przyklad 4.2. Czarnoskrzynkowe techniki testowania 
+W kolejnych sekcjach omówione zostały następujące powszechnie stosowane czarnoskrzynkowe techniki 
+testowania: 
+● podział na klasy równoważności; 
+● analiza wartości brzegowych; 
+● testowanie w oparciu o tablicę decyzyjną; 
+● testowanie przejść pomiędzy stanami. 
+4.2.1. Podział na klasy równoważności 
+Technika podziału na klasy równoważności polega na dzieleniu danych na klasy (zwane klasami 
+równoważności) zgodnie z założeniem, że każda klasa będzie zawierała elementy, które mają być 
+przetwarzane przez przedmiot testów w ten sam sposób. U podstaw tej techniki leży teoria, zgodnie z którą 
+jeśli przypadek testowy służący do testowania jednej wartości z klasy równoważności wykryje defekt, to 
+defekt ten powinien również zostać wykryty przez przypadki testowe służące do testowania każdej innej 
+wersja 4.0.1 
+Strona 46 z 91 
+© International Software Testing Qualifications Board  
+07.05.2025 
+© Stowarzyszenie Jakości Systemów Informatycznych 
+Certyfikowany tester 
+Poziom podstawowy 
+wartości należącej do tej samej klasy. Oznacza to, że wystarczające jest utworzenie jednego testu 
+w odniesieniu do każdej z klas.  
+Klasy równoważności można wyznaczać w odniesieniu do wszelkich elementów danych, które są związane 
+z przedmiotem testów, takich jak: dane wejściowe, dane wyjściowe, elementy konfiguracji, wartości 
+wewnętrzne, wartości zależne od czasu oraz parametry interfejsu. Klasy mogą być ciągłe lub dyskretne, 
+uporządkowane lub nieuporządkowane oraz skończone lub nieskończone, nie mogą natomiast nakładać 
+się na siebie ani być pustymi zbiorami. 
+W przypadku prostych elementów testowych podział na klasy równoważności nie sprawia zwykle trudności, 
+ale w praktyce zrozumienie tego, jak dany obiekt testowy będzie traktować poszczególne wartości, bywa 
+skomplikowane. Z tego powodu przy dokonywaniu podziału należy zachować ostrożność. 
+Klasa równoważności zawierająca poprawne wartości jest nazywana poprawną klasą równoważności, 
+a klasa zawierająca wartości niepoprawne — niepoprawną klasą równoważności. Definicje wartości 
+poprawnych i niepoprawnych mogą przy tym różnić się w zależności od zespołu lub organizacji. Za wartości 
+poprawne mogą być na przykład uważane takie, które powinny być przetwarzane przez przedmiot testów, 
+lub takie, w przypadku których sposób przetwarzania określa specyfikacja. Z kolei za wartości niepoprawne 
+mogą być uznawane wartości, które przedmiot testów powinien zignorować lub odrzucić, bądź wartości, 
+w odniesieniu do których w specyfikacji przedmiotu testów nie zdefiniowano sposobu przetwarzania. 
+W przypadku podziału na klasy równoważności elementami pokrycia są klasy równoważności. Warunkiem 
+uzyskania stuprocentowego pokrycia przy korzystaniu z tej techniki jest sprawdzenie za pomocą 
+przypadków testowych wszystkich zidentyfikowanych klas (w tym klas niepoprawnych) poprzez pokrycie 
+każdej klasy co najmniej raz. Pokrycie mierzy się jako iloraz liczby klas sprawdzonych za pomocą co 
+najmniej jednego przypadku testowego przez łączną liczbę zidentyfikowanych klas, a uzyskaną wartość 
+wyraża się w procentach. 
+W wielu elementach testowych występuje po kilka zbiorów klas (przykładem mogą być elementy testowe 
+mające więcej niż jeden parametr wejściowy), co oznacza, że przypadek testowy będzie pokrywać klasy 
+należące do kilku różnych zbiorów. Najprostszym kryterium pokrycia w przypadku występowania wielu 
+zbiorów klas jest pokrycie typu „każdy wybór” (ang. each choice) (Ammann 2016). Wymaga ono, aby 
+przypadki testowe sprawdzały każdą klasę z każdego zbioru klas co najmniej raz. Pokrycie to nie 
+uwzględnia kombinacji klas.
+Copilot powiedział
+Jasne, Anna — już tłumaczę to po ludzku i z przykładami, tak żebyś naprawdę zrozumiała, a nie tylko „wykuła”.
+Poniżej masz streszczenie + konkretny przykład, który od razu pokazuje, jak działa podział na klasy równoważności.
+
+⭐ 4.2 Czarnoskrzynkowe techniki testowania — o co chodzi?
+To są techniki, w których nie interesuje nas kod, tylko zachowanie systemu na podstawie wejść i wyjść.
+W tej sekcji ISTQB omawia 4 najpopularniejsze techniki:
+
+podział na klasy równoważności
+
+analiza wartości brzegowych
+
+tablice decyzyjne
+
+testowanie przejść między stanami
+
+Ty chcesz 4.2.1 — podział na klasy równoważności, więc lecimy.
+
+⭐ 4.2.1 Podział na klasy równoważności — streszczenie po ludzku
+To jedna z najprostszych i najczęściej używanych technik.
+
+🔍 O co chodzi?
+Zamiast testować każdą możliwą wartość wejściową, dzielisz dane na grupy (klasy), w których system zachowuje się tak samo.
+Zakładamy, że:
+
+Jeśli jedna wartość z klasy wykryje błąd, to każda inna z tej klasy też by go wykryła.
+
+Dlatego z każdej klasy wybierasz tylko jeden test.
+
+🔍 Jakie mogą być klasy?
+poprawne (system powinien je przyjąć)
+
+niepoprawne (system powinien je odrzucić / zgłosić błąd)
+
+Klasy nie mogą:
+
+na siebie nachodzić
+
+być puste
+
+🔍 Co można dzielić na klasy?
+Wszystko, co jest danymi:
+
+wejścia (np. wiek, kwota, login)
+
+wyjścia
+
+konfiguracje
+
+wartości zależne od czasu
+
+parametry interfejsu
+
+🔍 Kiedy masz wiele parametrów?
+Każdy parametr ma swój zestaw klas.
+Najprostsze kryterium pokrycia to each choice — każda klasa z każdego parametru musi być przetestowana przynajmniej raz.
+
+⭐ Przykład — najprostszy i najbardziej ISTQB‑owy
+Załóżmy, że testujesz pole „wiek” w formularzu.
+Wymaganie:
+
+System akceptuje wiek od 18 do 65 lat.
+
+1️⃣ Tworzymy klasy równoważności
+Typ klasy	Zakres	Opis
+Poprawna	18–65	Wiek prawidłowy
+Niepoprawna		Za młody
+Niepoprawna	>65	Za stary
+2️⃣ Wybieramy po jednym przykładzie z każdej klasy
+z klasy poprawnej → np. 30
+
+z klasy niepoprawnej (za młody) → 10
+
+z klasy niepoprawnej (za stary) → 80
+
+3️⃣ Tworzymy przypadki testowe
+Test	Wartość	Oczekiwany wynik
+1	30	Formularz akceptuje
+2	10	Błąd: wiek za niski
+3	80	Błąd: wiek za wysoki
+I to wszystko — zamiast testować 48 wartości (18–65), testujesz 3.
+
+⭐ Drugi przykład — bardziej „życiowy”
+Wymaganie:
+
+Pole „kwota przelewu” przyjmuje wartości od 1 do 10 000 PLN.
+Wartość musi być liczbą całkowitą.
+
+Klasy:
+Poprawna liczba całkowita 1–10 000
+
+Niepoprawna — liczba <1
+
+Niepoprawna — liczba >10 000
+
+Niepoprawna — nie‑liczba (np. tekst, puste pole)
+
+Przykładowe wartości:
+500
+
+0
+
+20 000
+
+„abc”
+
+⭐ Chcesz, żebym streściła Ci też 4.2.2, 4.2.3 i 4.2.4?
+Albo mogę zrobić Ci quiz z klas równoważności, żebyś od razu utrwaliła.
+
+
+
+
+
+
+Twoja wypowiedź
+po koleim mordus, bede to czytac potem pytac ciebie,m aby nam sie utwalilo co?
+Copilot powiedział
+Jasne, Anna — możemy iść po kolei, spokojnie, krok po kroku. Ty czytasz, pytasz, a ja tłumaczę tak, żeby to naprawdę weszło w głowę. To jest najlepszy sposób nauki: małe porcje + szybkie wyjaśnienia + przykłady.
+
+Brzmi jak dobry plan.
+
+Jeśli chcesz, możemy działać tak:
+
+✔️ Ty: czytasz fragment sylabusa
+✔️ Ja: tłumaczę go po ludzku, robię przykłady, a potem króciutki quiz
+✔️ Ty: odpowiadasz, a ja sprawdzam i wyjaśniam
+To jest turbo‑skuteczne, bo od razu utrwalasz.
+
+Daj znać, kiedy przeczytasz kolejny fragment i chcesz go omówić. Możemy iść rozdział po rozdziale, albo sekcja po sekcji — jak Ci wygodniej.
+
+
+
+
+
+
+Twoja wypowiedź
+Pokrycie mierzy się jako iloraz liczby klas sprawdzonych za pomocą co 
+najmniej jednego przypadku testowego przez łączną liczbę zidentyfikowanych klas, a uzyskaną wartość 
+wyraża się w procentach.
+Copilot powiedział
+Jasne, Anna — to zdanie jest dużo prostsze, niż wygląda w sylabusie. Już tłumaczę tak, żeby było intuicyjnie.
+
+⭐ Co to znaczy?
+Pokrycie klas równoważności to po prostu informacja, ile z utworzonych klas zostało przetestowanych.
+
+Wzór jest banalny:
+
+Pokrycie
+=
+liczba klas, kt
+o
+ˊ
+re przetestowała
+s
+ˊ
+liczba wszystkich klas
+×
+100
+%
+Czyli:
+
+liczysz, ile klas równoważności zidentyfikowałaś
+
+sprawdzasz, ile z nich ma przynajmniej jeden test
+
+dzielisz jedno przez drugie
+
+mnożysz ×100%
+
+I to wszystko.
+
+⭐ Przykład (najlepszy sposób, żeby to zapamiętać)
+Załóżmy, że masz pole „wiek” z wymaganiem:
+
+Poprawny wiek: 18–65.
+
+Tworzysz klasy:
+
+<18 — niepoprawna
+
+18–65 — poprawna
+
+65 — niepoprawna
+
+Masz więc 3 klasy.
+
+Teraz tworzysz testy:
+
+Test 1: wiek = 20 → pokrywa klasę „18–65”
+
+Test 2: wiek = 10 → pokrywa klasę „<18”
+
+Nie zrobiłaś testu dla >65.
+
+Pokrycie:
+2
+3
+×
+100
+%
+=
+66,6
+%
+Czyli pokryłaś 2 z 3 klas, więc masz 66% pokrycia.
+<h2>4.2.2 Analiza wartości brzegowych</h2>
+
+<p>
+Technika analizy wartości brzegowych polega na testowaniu wartości znajdujących się na granicach 
+klas równoważności. Można ją stosować tylko wtedy, gdy klasy są uporządkowane (np. liczby, daty). 
+Wartościami brzegowymi są minimalna i maksymalna wartość klasy.
+</p>
+
+<p>
+Założenie tej techniki jest proste: jeśli dwa elementy należą do tej samej klasy, to wszystkie wartości 
+pomiędzy nimi również do niej należą. Programiści najczęściej popełniają błędy właśnie na granicach, 
+dlatego testowanie brzegów jest bardzo skuteczne.
+</p>
+
+<h3>Warianty analizy wartości brzegowych</h3>
+
+<h4>1. Dwupunktowa analiza wartości brzegowych</h4>
+<p>
+Dla każdej wartości brzegowej sprawdzamy:
+</p>
+<ul>
+  <li>samą wartość brzegową,</li>
+  <li>najbliższą wartość z sąsiedniej klasy.</li>
+</ul>
+<p>
+Oznacza to 2 testy na jedną granicę. Pokrycie liczy się jako:
+<br>
+<strong>(liczba sprawdzonych wartości brzegowych) / (liczba wszystkich wartości brzegowych)</strong>.
+</p>
+
+<h4>2. Trójpunktowa analiza wartości brzegowych</h4>
+<p>
+Dla każdej wartości brzegowej sprawdzamy:
+</p>
+<ul>
+  <li>wartość poniżej,</li>
+  <li>wartość brzegową,</li>
+  <li>wartość powyżej.</li>
+</ul>
+<p>
+Oznacza to 3 testy na jedną granicę. Pokrycie liczy się jako:
+<br>
+<strong>(liczba sprawdzonych wartości brzegowych i sąsiednich) / (łączna liczba tych wartości)</strong>.
+</p>
+
+<p>
+Trójpunktowa analiza jest bardziej rygorystyczna i wykrywa błędy, które mogą zostać pom
+</div>
 </script>
     <script src="/navigation.js"></script>
 <script src="/main.js"></script>
