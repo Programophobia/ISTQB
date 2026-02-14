@@ -953,6 +953,152 @@ Wady:
   <li><strong>2.</strong> Bo testy opierają się na kodzie, a nie na wymaganiach — jeśli czegoś nie ma w kodzie, nie zostanie przetestowane.</li>
   <li><strong>3.</strong> Jeśli masz 100% pokrycia gałęzi, automatycznie masz 100% pokrycia instrukcji.</li>
 </ul>
+<h2>4.4 Techniki testowania oparte na doświadczeniu</h2>
+
+<p>
+Techniki oparte na doświadczeniu wykorzystują wiedzę, intuicję i praktykę testera. 
+Są szczególnie przydatne, gdy dokumentacja jest niepełna, wymagania są niejasne lub gdy trzeba szybko znaleźć defekty.
+</p>
+
+<hr>
+
+<!-- 4.4.1 -->
+<h3>4.4.1 Zgadywanie błędów</h3>
+
+<p>
+Zgadywanie błędów polega na przewidywaniu miejsc, w których mogą wystąpić defekty, 
+na podstawie doświadczenia testera, typowych błędów programistów oraz wiedzy o awariach w podobnych systemach.
+</p>
+
+<p>
+Typowe obszary, w których często pojawiają się błędy:
+</p>
+
+<ul>
+  <li>dane wejściowe (np. brak walidacji, błędne parametry),</li>
+  <li>dane wyjściowe (np. zły format, niepoprawny wynik),</li>
+  <li>logika (np. brakujące przypadki, złe operatory),</li>
+  <li>obliczenia (np. błędne wzory, dzielenie przez zero),</li>
+  <li>interfejsy (np. niezgodność typów),</li>
+  <li>dane (np. złe inicjalizacje).</li>
+</ul>
+
+<p>
+Metodycznym podejściem do zgadywania błędów są tzw. <strong>ataki usterek</strong> — 
+czyli tworzenie list potencjalnych błędów i projektowanie testów, które mają je ujawnić.
+</p>
+
+<h4>Przykład</h4>
+<p>
+Tester wie, że programiści często zapominają o obsłudze wartości ujemnych.  
+Projektuje więc testy z wartościami: -1, -100, -999, aby sprawdzić, czy system je poprawnie obsłuży.
+</p>
+
+<h4>Pytania testowe</h4>
+<ol>
+  <li>Który obszar jest typowym źródłem błędów wykrywanych przez zgadywanie błędów?</li>
+  <li>Na czym polegają ataki usterek?</li>
+  <li>Co jest podstawą techniki zgadywania błędów?</li>
+</ol>
+
+<h4>Odpowiedzi ABCD</h4>
+<ul>
+  <li><strong>1.</strong> A: Dane wejściowe</li>
+  <li><strong>2.</strong> C: Tworzeniu list potencjalnych błędów i projektowaniu testów pod nie</li>
+  <li><strong>3.</strong> B: Doświadczenie i intuicja testera</li>
+</ul>
+
+<hr>
+
+<!-- 4.4.2 -->
+<h3>4.4.2 Testowanie eksploracyjne</h3>
+
+<p>
+Testowanie eksploracyjne polega na jednoczesnym projektowaniu, wykonywaniu i ocenianiu testów 
+w trakcie poznawania systemu. Tester działa dynamicznie, reaguje na zachowanie aplikacji i odkrywa nowe obszary do testowania.
+</p>
+
+<p>
+Często stosuje się <strong>testowanie w sesjach</strong> — tester pracuje w określonym czasie, 
+ma kartę sesji z celami, a po zakończeniu odbywa się podsumowanie.
+</p>
+
+<p>
+Testowanie eksploracyjne jest szczególnie przydatne, gdy:
+</p>
+
+<ul>
+  <li>dokumentacja jest niepełna,</li>
+  <li>czas jest ograniczony,</li>
+  <li>system jest złożony i wymaga kreatywnego podejścia.</li>
+</ul>
+
+<h4>Przykład</h4>
+<p>
+Tester testuje nową aplikację mobilną bez szczegółowej dokumentacji.  
+Przegląda ekran po ekranie, wykonuje różne akcje, zapisuje obserwacje i na bieżąco tworzy nowe testy.
+</p>
+
+<h4>Pytania testowe</h4>
+<ol>
+  <li>Co charakteryzuje testowanie eksploracyjne?</li>
+  <li>W jakiej sytuacji testowanie eksploracyjne jest szczególnie przydatne?</li>
+  <li>Co to jest testowanie w sesjach?</li>
+</ol>
+
+<h4>Odpowiedzi ABCD</h4>
+<ul>
+  <li><strong>1.</strong> D: Projektowanie i wykonywanie testów jednocześnie</li>
+  <li><strong>2.</strong> B: Gdy dokumentacja jest niepełna lub niejasna</li>
+  <li><strong>3.</strong> A: Praca w określonym czasie z kartą celów</li>
+</ul>
+
+<hr>
+
+<!-- 4.4.3 -->
+<h3>4.4.3 Testowanie w oparciu o listę kontrolną</h3>
+
+<p>
+Testowanie w oparciu o listę kontrolną polega na projektowaniu i wykonywaniu testów tak, 
+aby pokryć wszystkie elementy znajdujące się na liście kontrolnej.  
+Lista kontrolna może zawierać pytania, warunki testowe, wymagania lub typowe problemy.
+</p>
+
+<p>
+Listy kontrolne tworzy się na podstawie:
+</p>
+
+<ul>
+  <li>doświadczenia testerów,</li>
+  <li>wiedzy o typowych awariach,</li>
+  <li>oczekiwań użytkowników.</li>
+</ul>
+
+<p>
+Listy kontrolne muszą być aktualizowane — niektóre punkty z czasem tracą skuteczność, 
+a nowe defekty mogą wymagać dodania kolejnych pozycji.
+</p>
+
+<h4>Przykład</h4>
+<p>
+Tester ma listę kontrolną dla aplikacji webowej, np.:  
+„Czy formularz waliduje e-mail?”, „Czy przycisk działa?”, „Czy strona działa na telefonie?”.  
+Podczas testów odhacza każdy punkt.
+</p>
+
+<h4>Pytania testowe</h4>
+<ol>
+  <li>Co jest podstawą testowania w oparciu o listę kontrolną?</li>
+  <li>Dlaczego listy kontrolne muszą być aktualizowane?</li>
+  <li>Co może zawierać lista kontrolna?</li>
+</ol>
+
+<h4>Odpowiedzi ABCD</h4>
+<ul>
+  <li><strong>1.</strong> C: Lista warunków testowych do pokrycia</li>
+  <li><strong>2.</strong> A: Bo niektóre punkty tracą skuteczność, a pojawiają się nowe defekty</li>
+  <li><strong>3.</strong> D: Pytania, wymagania, typowe problemy</li>
+</ul>
 
 </div>
 </script>
