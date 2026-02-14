@@ -656,6 +656,112 @@ Zamknięte --sensor--> Otwieranie --sensor--> Otwarte --timeout--> Zamknięte
     <strong>3.</strong> Elementem pokrycia są <strongwszystkie poprawne przejścia</strong> między stanami.
   </li>
 </ul>
+<h3>Przykład – Bankomat (ATM)</h3>
+
+<p>
+Bankomat może znajdować się w jednym z trzech stanów:
+</p>
+
+<ul>
+  <li><strong>Idle</strong> – oczekiwanie na kartę</li>
+  <li><strong>Card Inserted</strong> – karta włożona, oczekiwanie na PIN</li>
+  <li><strong>Authenticated</strong> – PIN poprawny, użytkownik może wykonywać operacje</li>
+</ul>
+
+<p>
+Zdarzenia:
+</p>
+
+<ul>
+  <li><strong>insert_card</strong> – użytkownik wkłada kartę</li>
+  <li><strong>enter_pin_ok</strong> – użytkownik wpisuje poprawny PIN</li>
+  <li><strong>enter_pin_fail</strong> – użytkownik wpisuje błędny PIN</li>
+  <li><strong>remove_card</strong> – użytkownik wyciąga kartę</li>
+</ul>
+
+<p>Tablica stanów:</p>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Stan</th>
+    <th>insert_card</th>
+    <th>enter_pin_ok</th>
+    <th>enter_pin_fail</th>
+    <th>remove_card</th>
+  </tr>
+
+  <tr>
+    <td>Idle</td>
+    <td>Card Inserted</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>Card Inserted</td>
+    <td></td>
+    <td>Authenticated</td>
+    <td>Idle</td>
+    <td>Idle</td>
+  </tr>
+
+  <tr>
+    <td>Authenticated</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Idle</td>
+  </tr>
+</table>
+
+<p>
+Przykładowa sekwencja testowa pokrywająca wszystkie poprawne przejścia:
+</p>
+
+<pre>
+Idle --insert_card--> Card Inserted 
+Card Inserted --enter_pin_ok--> Authenticated 
+Authenticated --remove_card--> Idle
+</pre>
+
+<p>
+Przykład testu niepoprawnego przejścia (powinien zostać odrzucony):
+</p>
+
+<pre>
+Idle --enter_pin_ok--> (niepoprawne przejście)
+</pre>
+
+<hr>
+
+<h3>Pytania testowe</h3>
+
+<ol>
+  <li>
+    Co oznacza pusta komórka w tablicy stanów bankomatu?
+  </li>
+  <li>
+    Jakie kryterium pokrycia wymaga wykonania zarówno poprawnych, jak i niepoprawnych przejść?
+  </li>
+  <li>
+    Jaki będzie wynik zdarzenia <strong>enter_pin_fail</strong> w stanie <strong>Card Inserted</strong>?
+  </li>
+</ol>
+
+<h3>Odpowiedzi i wyjaśnienia</h3>
+
+<ul>
+  <li>
+    <strong>1.</strong> Pusta komórka oznacza <strong>niepoprawne przejście</strong>, którego system nie powinien wykonać.
+  </li>
+  <li>
+    <strong>2.</strong> <strong>Pokrycie wszystkich przejść</strong> – obejmuje przejścia poprawne i próby wykonania niepoprawnych.
+  </li>
+  <li>
+    <strong>3.</strong> System wróci do stanu <strong>Idle</strong> (błędny PIN powoduje odrzucenie karty).
+  </li>
+</ul>
 
 </div>
 </script>
