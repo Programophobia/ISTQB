@@ -413,6 +413,125 @@ Trójpunktowa analiza jest bardziej rygorystyczna i wykrywa błędy, które mog�
 <h3>Pytanie testowe</h3>
 
 <p><strong>Pytanie:</strong><br> System akceptuje kwotę przelewu od 100 do 5000 PLN.<br> Który zestaw danych testowych odpowiada <strong>dwupunktowej analizie wartości brzegowych</strong>? </p> <ol type="A"> <li>100, 101, 4999, 5000</li> <li>99, 100, 5000, 5001</li> <li>100, 5000</li> <li>99, 101, 4999, 5001</li> </ol> <p><strong>Prawidłowa odpowiedź: B</strong></p> <p><strong>Dlaczego?</strong><br> Dwupunktowa analiza = wartość brzegowa + wartość z sąsiedniej klasy: </p> <ul> <li>Dolna granica: 100 i 99</li> <li>Górna granica: 5000 i 5001</li> </ul>
+<h2>4.2.3 Testowanie w oparciu o tablicę decyzyjną</h2>
+
+<p>
+Testowanie oparte na tablicy decyzyjnej polega na analizie tego, jak różne kombinacje warunków 
+wpływają na wynik działania systemu. Tablice decyzyjne świetnie nadają się do testowania złożonych 
+reguł biznesowych, gdzie wiele warunków może prowadzić do różnych akcji.
+</p>
+
+<p>
+Każda tablica decyzyjna składa się z:
+</p>
+<ul>
+  <li><strong>warunków</strong> – co musi być spełnione,</li>
+  <li><strong>akcji</strong> – co system powinien zrobić,</li>
+  <li><strong>kolumn</strong> – każda kolumna to jedna reguła decyzyjna (kombinacja warunków).</li>
+</ul>
+
+<p>
+Wartości w tablicy mogą być:
+</p>
+<ul>
+  <li><strong>P</strong> – warunek spełniony (true),</li>
+  <li><strong>F</strong> – warunek niespełniony (false),</li>
+  <li><strong>—</strong> – wartość nieistotna dla danej reguły,</li>
+  <li><strong>nd</strong> – nie dotyczy,</li>
+  <li><strong>X</strong> – akcja powinna zostać wykonana,</li>
+  <li><strong>puste pole</strong> – akcja nie powinna zostać wykonana.</li>
+</ul>
+
+<p>
+Pełna tablica decyzyjna zawiera wszystkie możliwe kombinacje warunków. Można ją uprościć, 
+usuwając kombinacje niemożliwe lub scalając kolumny, w których część warunków nie ma wpływu 
+na wynik.
+</p>
+
+<p>
+W tej technice elementami pokrycia są <strong>kolumny</strong> (reguły decyzyjne). 
+Aby uzyskać 100% pokrycia, należy przetestować każdą możliwą do spełnienia kolumnę.
+</p>
+
+<hr>
+
+<h3>Przykład</h3>
+
+<p>
+System przyznaje rabat według reguł:
+</p>
+
+<ul>
+  <li>Warunek A: Klient ma kartę stałego klienta.</li>
+  <li>Warunek B: Klient zrobił zakupy powyżej 200 zł.</li>
+</ul>
+
+<p>Akcja: Przyznaj rabat.</p>
+
+<p>Tablica decyzyjna:</p>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Warunek A</th>
+    <th>Warunek B</th>
+    <th>Akcja: Rabat</th>
+  </tr>
+  <tr>
+    <td>P</td>
+    <td>P</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>P</td>
+    <td>F</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>F</td>
+    <td>P</td>
+    <td>X</td>
+  </tr>
+  <tr>
+    <td>F</td>
+    <td>F</td>
+    <td></td>
+  </tr>
+</table>
+
+<p>
+Interpretacja: rabat jest przyznawany, jeśli spełniony jest przynajmniej jeden warunek.
+</p>
+
+<hr>
+
+<h3>Pytania testowe</h3>
+
+<ol>
+  <li>
+    Co reprezentuje jedna kolumna w tablicy decyzyjnej?
+  </li>
+  <li>
+    Który symbol oznacza, że warunek nie ma znaczenia dla danej reguły?
+  </li>
+  <li>
+    Co jest elementem pokrycia w testowaniu opartym na tablicy decyzyjnej?
+  </li>
+</ol>
+
+<h3>Odpowiedzi i wyjaśnienia</h3>
+
+<ul>
+  <li>
+    <strong>1.</strong> Kolumna to jedna <strong>reguła decyzyjna</strong>, czyli unikatowa kombinacja warunków i akcji.
+  </li>
+  <li>
+    <strong>2.</strong> Symbol <strong>—</strong> oznacza, że warunek jest nieistotny dla wyniku.
+  </li>
+  <li>
+    <strong>3.</strong> Elementem pokrycia są <strong>kolumny</strong> zawierające możliwe do spełnienia kombinacje warunków.
+  </li>
+</ul>
+
 </div>
 </script>
     <script src="/navigation.js"></script>
