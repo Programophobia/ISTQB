@@ -23,287 +23,224 @@
 
 </head>
 <body>
-   <div>⭐ 4.2 Czarnoskrzynkowe techniki testowania — o co chodzi?<br>
-To są techniki, w których nie interesuje nas kod, tylko zachowanie systemu na podstawie wejść i wyjść.
-W tej sekcji ISTQB omawia 4 najpopularniejsze techniki:<br>
+  <h2>4.2 Czarnoskrzynkowe techniki testowania — o co chodzi?</h2>
+
+<p>
+  Czarnoskrzynkowe techniki testowania polegają na sprawdzaniu <strong>zachowania systemu</strong>
+  na podstawie wejść i wyjść — bez zaglądania do kodu.  
+  W ISTQB wyróżniamy cztery główne techniki:
+</p>
 
-podział na klasy równoważności<br>
+<ul>
+  <li>podział na klasy równoważności,</li>
+  <li>analiza wartości brzegowych,</li>
+  <li>tablice decyzyjne,</li>
+  <li>testowanie przejść między stanami.</li>
+</ul>
 
-analiza wartości brzegowych<br>
+<hr />
 
-tablice decyzyjne<br>
+<h2>4.2.1 Podział na klasy równoważności</h2>
 
-testowanie przejść między stanami<br>
+<p>
+  Jedna z najprostszych i najczęściej używanych technik czarnoskrzynkowych.
+  Jej celem jest ograniczenie liczby testów poprzez grupowanie danych wejściowych
+  w <strong>klasy równoważności</strong>, czyli zbiory wartości, które system traktuje tak samo.
+</p>
 
-Ty chcesz 4.2.1 — podział na klasy równoważności, więc lecimy.<br>
+<h3>Na czym polega technika?</h3>
 
-⭐ 4.2.1 Podział na klasy równoważności — streszczenie po ludzku<br>
-To jedna z najprostszych i najczęściej używanych technik.<br>
+<p>
+  Zamiast testować każdą możliwą wartość, dzielisz dane na klasy, w których:
+</p>
+
+<ul>
+  <li>system zachowuje się identycznie,</li>
+  <li>jeśli jedna wartość z klasy wykryje błąd — każda inna też by go wykryła.</li>
+</ul>
 
-🔍 O co chodzi?
-Zamiast testować każdą możliwą wartość wejściową, dzielisz dane na grupy (klasy), w których system zachowuje się tak samo.
-Zakładamy, że:<br>
+<p>
+  Dlatego z każdej klasy wybierasz <strong>tylko jeden reprezentatywny test</strong>.
+</p>
 
-Jeśli jedna wartość z klasy wykryje błąd, to każda inna z tej klasy też by go wykryła.<br>
+<h3>Rodzaje klas równoważności</h3>
 
-Dlatego z każdej klasy wybierasz tylko jeden test.<br>
+<ul>
+  <li><strong>Poprawne</strong> — system powinien je zaakceptować.</li>
+  <li><strong>Niepoprawne</strong> — system powinien je odrzucić lub zgłosić błąd.</li>
+</ul>
 
-🔍 Jakie mogą być klasy?<br>
-poprawne (system powinien je przyjąć)<br>
+<p>Klasy muszą być:</p>
+<ul>
+  <li>rozłączne (nie mogą się nakładać),</li>
+  <li>niepuste,</li>
+  <li>kompletne (obejmują cały zakres możliwych danych).</li>
+</ul>
+
+<h3>Co można dzielić na klasy?</h3>
 
-niepoprawne (system powinien je odrzucić / zgłosić błąd)<br>
+<ul>
+  <li>wejścia (np. wiek, kwota, login),</li>
+  <li>wyjścia,</li>
+  <li>konfiguracje,</li>
+  <li>wartości zależne od czasu,</li>
+  <li>parametry interfejsu.</li>
+</ul>
 
-Klasy nie mogą:<br>
+<h3>Wiele parametrów?</h3>
 
-na siebie nachodzić<br>
+<p>
+  Każdy parametr ma własne klasy równoważności.  
+  Najprostsze kryterium pokrycia to <strong>each choice</strong> — każda klasa z każdego parametru
+  musi być przetestowana przynajmniej raz.
+</p>
 
-być puste<br>
+<hr />
+
+<h3>Przykład 1 — klasyczny ISTQB (wiek)</h3>
 
-🔍 Co można dzielić na klasy?<br>
-Wszystko, co jest danymi:<br>
+<p><strong>Wymaganie:</strong> System akceptuje wiek od 18 do 65 lat.</p>
+
+<h4>1️⃣ Tworzymy klasy równoważności</h4>
+
+<table border="1" cellpadding="6">
+  <tr><th>Typ klasy</th><th>Zakres</th><th>Opis</th></tr>
+  <tr><td>Poprawna</td><td>18–65</td><td>Wiek prawidłowy</td></tr>
+  <tr><td>Niepoprawna</td><td>&lt;18</td><td>Za młody</td></tr>
+  <tr><td>Niepoprawna</td><td>&gt;65</td><td>Za stary</td></tr>
+</table>
+
+<h4>2️⃣ Wybieramy po jednym przykładzie</h4>
+
+<ul>
+  <li>30 — poprawna klasa,</li>
+  <li>10 — za młody,</li>
+  <li>80 — za stary.</li>
+</ul>
+
+<h4>3️⃣ Przypadki testowe</h4>
+
+<table border="1" cellpadding="6">
+  <tr><th>Test</th><th>Wartość</th><th>Oczekiwany wynik</th></tr>
+  <tr><td>1</td><td>30</td><td>Formularz akceptuje</td></tr>
+  <tr><td>2</td><td>10</td><td>Błąd: wiek za niski</td></tr>
+  <tr><td>3</td><td>80</td><td>Błąd: wiek za wysoki</td></tr>
+</table>
+
+<hr />
+
+<h3>Przykład 2 — bardziej „życiowy” (kwota przelewu)</h3>
+
+<p><strong>Wymaganie:</strong></p>
+<ul>
+  <li>Kwota przelewu: 1–10 000 PLN,</li>
+  <li>musi być liczbą całkowitą.</li>
+</ul>
+
+<h4>Klasy:</h4>
+
+<ul>
+  <li>Poprawna: 1–10 000</li>
+  <li>Niepoprawna: &lt;1</li>
+  <li>Niepoprawna: &gt;10 000</li>
+  <li>Niepoprawna: nie‑liczba (np. tekst, puste pole)</li>
+</ul>
+
+<h4>Przykładowe wartości:</h4>
+
+<ul>
+  <li>500</li>
+  <li>0</li>
+  <li>20 000</li>
+  <li>"abc"</li>
+</ul>
+
+<hr />
+
+<h3>Pokrycie klas równoważności</h3>
+
+<p>
+  Pokrycie = (liczba klas, które mają przynajmniej jeden test) / (liczba wszystkich klas) × 100%
+</p>
+
+<h4>Przykład:</h4>
+
+<p>Klasy dla wieku:</p>
+<ul>
+  <li>&lt;18 — niepoprawna</li>
+  <li>18–65 — poprawna</li>
+  <li>&gt;65 — niepoprawna</li>
+</ul>
+
+<p>Testy:</p>
+<ul>
+  <li>20 → pokrywa klasę poprawną</li>
+  <li>10 → pokrywa klasę &lt;18</li>
+</ul>
+
+<p>Brakuje testu dla &gt;65.</p>
+
+<p><strong>Pokrycie = 2/3 × 100% = 66,6%</strong></p>
+
+<hr />
+
+<h2>Pytania testowe (A–D)</h2>
+
+<div class="question">
+  <p><strong>1. Co jest główną ideą podziału na klasy równoważności?</strong></p>
+  <ul class="answers">
+    <li>A. Testowanie wszystkich możliwych wartości wejściowych</li>
+    <li>B. Grupowanie danych w zbiory zachowujące się tak samo</li>
+    <li>C. Testowanie tylko wartości brzegowych</li>
+    <li>D. Testowanie kodu źródłowego</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>2. Która z poniższych cech NIE dotyczy klas równoważności?</strong></p>
+  <ul class="answers">
+    <li>A. Muszą być rozłączne</li>
+    <li>B. Mogą na siebie nachodzić</li>
+    <li>C. Nie mogą być puste</li>
+    <li>D. Powinny obejmować cały zakres danych</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>3. Co oznacza kryterium each choice?</strong></p>
+  <ul class="answers">
+    <li>A. Testujemy wszystkie możliwe kombinacje wartości</li>
+    <li>B. Każda klasa z każdego parametru musi być przetestowana przynajmniej raz</li>
+    <li>C. Testujemy tylko wartości brzegowe</li>
+    <li>D. Testujemy tylko klasy poprawne</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>4. Ile testów minimalnie potrzeba dla 4 klas równoważności?</strong></p>
+  <ul class="answers">
+    <li>A. 1</li>
+    <li>B. 2</li>
+    <li>C. 3</li>
+    <li>D. 4</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: D</p>
+</div>
+
+<div class="question">
+  <p><strong>5. Co oznacza pokrycie klas równoważności?</strong></p>
+  <ul class="answers">
+    <li>A. Liczbę testów automatycznych</li>
+    <li>B. Procent klas, które mają przynajmniej jeden test</li>
+    <li>C. Liczbę defektów wykrytych w klasach</li>
+    <li>D. Liczbę parametrów wejściowych</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
 
-wejścia (np. wiek, kwota, login)<br>
-
-wyjścia<br>
-
-konfiguracje<br>
-
-wartości zależne od czasu<br>
-
-parametry interfejsu<br>
-
-🔍 Kiedy masz wiele parametrów?<br>
-Każdy parametr ma swój zestaw klas.<br>
-Najprostsze kryterium pokrycia to each choice — każda klasa z każdego parametru musi być przetestowana przynajmniej raz.<br>
-
-⭐ Przykład — najprostszy i najbardziej ISTQB‑owy<br>
-Załóżmy, że testujesz pole „wiek” w formularzu.<br>
-Wymaganie:<br>
-
-System akceptuje wiek od 18 do 65 lat.<br>
-
-1️⃣ Tworzymy klasy równoważności<br>
-Typ klasy	Zakres	Opis<br>
-Poprawna	18–65	Wiek prawidłowy<br>
-Niepoprawna		Za młody<br>
-Niepoprawna	>65	Za stary<br>
-2️⃣ Wybieramy po jednym przykładzie z każdej klasy<br>
-z klasy poprawnej → np. 30<br>
-<br>
-z klasy niepoprawnej (za młody) → 10<br>
-
-z klasy niepoprawnej (za stary) → 80<br>
-
-3️⃣ Tworzymy przypadki testowe<br>
-Test	Wartość	Oczekiwany wynik<br>
-1	30	Formularz akceptuje<br>
-2	10	Błąd: wiek za niski<br>
-3	80	Błąd: wiek za wysoki<br>
-I to wszystko — zamiast testować 48 wartości (18–65), testujesz 3.<br>
-
-⭐ Drugi przykład — bardziej „życiowy”<br>
-Wymaganie:<br>
-
-Pole „kwota przelewu” przyjmuje wartości od 1 do 10 000 PLN.<br>
-Wartość musi być liczbą całkowitą.<br>
-<br>
-Klasy:<br>
-Poprawna liczba całkowita 1–10 000<br>
-<br>
-Niepoprawna — liczba <1<br>
-
-Niepoprawna — liczba >10 000<br>
-
-Niepoprawna — nie‑liczba (np. tekst, puste pole)<br>
-
-Przykładowe wartości:<br>
-500<br>
-
-
-20 000<br>
-
-„abc”<br>
-
-
-⭐ 4.2 Czarnoskrzynkowe techniki testowania — o co chodzi?
-To są techniki, w których nie interesuje nas kod, tylko zachowanie systemu na podstawie wejść i wyjść.
-W tej sekcji ISTQB omawia 4 najpopularniejsze techniki:
-
-podział na klasy równoważności
-
-analiza wartości brzegowych
-
-tablice decyzyjne
-
-testowanie przejść między stanami
-
-Ty chcesz 4.2.1 — podział na klasy równoważności, więc lecimy.
-
-⭐ 4.2.1 Podział na klasy równoważności — streszczenie po ludzku
-To jedna z najprostszych i najczęściej używanych technik.
-
-🔍 O co chodzi?
-Zamiast testować każdą możliwą wartość wejściową, dzielisz dane na grupy (klasy), w których system zachowuje się tak samo.
-Zakładamy, że:
-
-Jeśli jedna wartość z klasy wykryje błąd, to każda inna z tej klasy też by go wykryła.
-
-Dlatego z każdej klasy wybierasz tylko jeden test.
-
-🔍 Jakie mogą być klasy?
-poprawne (system powinien je przyjąć)
-
-niepoprawne (system powinien je odrzucić / zgłosić błąd)
-
-Klasy nie mogą:
-
-na siebie nachodzić
-
-być puste
-
-🔍 Co można dzielić na klasy?
-Wszystko, co jest danymi:
-
-wejścia (np. wiek, kwota, login)
-
-wyjścia
-
-konfiguracje
-
-wartości zależne od czasu
-
-parametry interfejsu
-
-🔍 Kiedy masz wiele parametrów?
-Każdy parametr ma swój zestaw klas.
-Najprostsze kryterium pokrycia to each choice — każda klasa z każdego parametru musi być przetestowana przynajmniej raz.
-
-⭐ Przykład — najprostszy i najbardziej ISTQB‑owy
-Załóżmy, że testujesz pole „wiek” w formularzu.
-Wymaganie:
-
-System akceptuje wiek od 18 do 65 lat.
-
-1️⃣ Tworzymy klasy równoważności
-Typ klasy	Zakres	Opis
-Poprawna	18–65	Wiek prawidłowy
-Niepoprawna		Za młody
-Niepoprawna	>65	Za stary
-2️⃣ Wybieramy po jednym przykładzie z każdej klasy
-z klasy poprawnej → np. 30
-
-z klasy niepoprawnej (za młody) → 10
-
-z klasy niepoprawnej (za stary) → 80
-
-3️⃣ Tworzymy przypadki testowe
-Test	Wartość	Oczekiwany wynik
-1	30	Formularz akceptuje
-2	10	Błąd: wiek za niski
-3	80	Błąd: wiek za wysoki
-I to wszystko — zamiast testować 48 wartości (18–65), testujesz 3.
-
-⭐ Drugi przykład — bardziej „życiowy”
-Wymaganie:
-
-Pole „kwota przelewu” przyjmuje wartości od 1 do 10 000 PLN.
-Wartość musi być liczbą całkowitą.
-
-Klasy:
-Poprawna liczba całkowita 1–10 000
-
-Niepoprawna — liczba <1
-
-Niepoprawna — liczba >10 000
-
-Niepoprawna — nie‑liczba (np. tekst, puste pole)
-
-Przykładowe wartości:
-500
-
-0
-
-20 000
-
-„abc”
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-⭐ Co to znaczy?
-Pokrycie klas równoważności to po prostu informacja, ile z utworzonych klas zostało przetestowanych.
-
-Wzór jest banalny:
-
-Pokrycie
-=
-liczba klas, kt
-o
-ˊ
-re przetestowała
-s
-ˊ
-liczba wszystkich klas
-×
-100
-%
-Czyli:
-
-liczysz, ile klas równoważności zidentyfikowałaś
-
-sprawdzasz, ile z nich ma przynajmniej jeden test
-
-dzielisz jedno przez drugie
-
-mnożysz ×100%
-
-I to wszystko.
-
-⭐ Przykład (najlepszy sposób, żeby to zapamiętać)
-Załóżmy, że masz pole „wiek” z wymaganiem:
-
-Poprawny wiek: 18–65.
-
-Tworzysz klasy:
-
-<18 — niepoprawna
-
-18–65 — poprawna
-
-65 — niepoprawna
-
-Masz więc 3 klasy.
-
-Teraz tworzysz testy:
-
-Test 1: wiek = 20 → pokrywa klasę „18–65”
-
-Test 2: wiek = 10 → pokrywa klasę „<18”
-
-Nie zrobiłaś testu dla >65.
-
-Pokrycie:
-2
-3
-×
-100
-%
-=
-66,6
-%
-Czyli pokryłaś 2 z 3 klas, więc masz 66% pokrycia.
-<h2>4.2.2 Analiza wartości brzegowych</h2>
 
 <p>
 Technika analizy wartości brzegowych polega na testowaniu wartości znajdujących się na granicach 
