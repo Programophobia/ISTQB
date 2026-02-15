@@ -11,6 +11,16 @@
     <meta name="author" content="Anna Powaska">
     <meta name="description" content="Anna Powaska">
     <link rel="icon" href="/images/150252110.png">
+      <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 20px auto; padding: 0 10px; }
+    h1, h2, h3 { color: #333; }
+    .example { background: #f5f5f5; padding: 10px; border-left: 4px solid #999; margin: 10px 0; }
+    .question { margin: 15px 0; padding: 10px; border: 1px solid #ddd; }
+    .answers li { margin: 3px 0; }
+    .correct { color: green; font-weight: bold; }
+    .note { font-size: 0.9em; color: #555; }
+  </style>
+
 </head>
 <body>
    <div>⭐ 4.2 Czarnoskrzynkowe techniki testowania — o co chodzi?<br>
@@ -1264,6 +1274,332 @@ Dopiero potem programista implementuje funkcję resetu hasła.
   <li><strong>2.</strong> C: Klienci, programiści i testerzy</li>
   <li><strong>3.</strong> A: Testy pozytywne</li>
 </ul>
+
+
+
+<h1>5.1 Planowanie testów – wersja „po ludzku”</h1>
+
+<p>
+  Ten moduł dotyczy tego, <strong>jak zaplanować testowanie</strong>: co chcemy osiągnąć,
+  kto co robi, kiedy, za ile i jak sprawdzamy, że „już wystarczy testów”.
+</p>
+
+<hr />
+
+<h2>5.1.1 Cel i treść planu testów</h2>
+
+<p>
+  <strong>Plan testów</strong> to dokument (albo zestaw ustaleń), który mówi:
+</p>
+<ul>
+  <li>co dokładnie testujemy i po co,</li>
+  <li>jak będziemy testować (podejście, poziomy, typy testów),</li>
+  <li>kto jest za co odpowiedzialny,</li>
+  <li>jakie zasoby są potrzebne (ludzie, środowiska, dane, narzędzia),</li>
+  <li>jak wygląda harmonogram i budżet testów.</li>
+</ul>
+
+<p>Plan testów:</p>
+<ul>
+  <li>pomaga zaplanować <strong>jak i kiedy</strong> osiągniemy cele testów,</li>
+  <li>pilnuje, żeby testy spełniały ustalone kryteria jakości,</li>
+  <li>jest formą komunikacji z zespołem i interesariuszami,</li>
+  <li>pokazuje, że testowanie jest spójne z polityką i strategią testów (albo świadomie od nich odbiega).</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  Tworzycie nową aplikację mobilną do zamawiania jedzenia. W planie testów zapisujecie:
+  jakie funkcje są w pierwszym wydaniu (np. rejestracja, logowanie, złożenie zamówienia),
+  kto testuje część mobilną, kto API, jakie środowisko testowe jest potrzebne,
+  kiedy robicie testy regresji i jakie są kryteria „możemy wypuścić wersję 1.0”.
+</div>
+
+<p>Typowe elementy planu testów:</p>
+<ul>
+  <li><strong>Kontekst testowania:</strong> zakres, cele testów, podstawa testów (np. wymagania, user stories).</li>
+  <li><strong>Założenia i ograniczenia:</strong np. „nie testujemy na IE11”, „mamy tylko jedno środowisko testowe”.</li>
+  <li><strong>Interesariusze:</strong role, obowiązki, potrzeby szkoleniowe, kto podejmuje decyzje.</li>
+  <li><strong>Wymiana informacji:</strong jakie raporty, jak często, w jakim formacie.</li>
+  <li><strong>Rejestr ryzyk:</strong ryzyka produktowe (np. awarie) i projektowe (np. opóźnienia).</li>
+  <li><strong>Podejście do testowania:</strong poziomy, typy testów, techniki, kryteria wejścia/wyjścia, metryki, dane testowe, środowisko.</li>
+  <li><strong>Budżet i harmonogram:</strong ile czasu i pieniędzy przewidziano na testy.</li>
+</ul>
+
+<div class="note">
+  Szczegółowy szablon planu testów opisuje standard ISO/IEC/IEEE 29119-3 – na egzaminie wystarczy znać ideę.
+</div>
+
+<hr />
+
+<h2>5.1.2 Wkład testera w planowanie iteracji i wydań</h2>
+
+<h3>Planowanie wydań</h3>
+<p>
+  <strong>Planowanie wydań</strong> patrzy szerzej – na całe wydanie produktu (np. wersja 1.0, 2.0).
+  Tu ustala się backlog produktu, dzieli duże historyjki na mniejsze i określa ogólne podejście do testowania.
+</p>
+
+<p>Tester w planowaniu wydań:</p>
+<ul>
+  <li>pomaga pisać <strong>testowalne user stories</strong> i kryteria akceptacji,</li>
+  <li>uczestniczy w analizie ryzyka (produktowego i projektowego),</li>
+  <li>szacuje pracochłonność testów dla historyjek,</li>
+  <li>współtworzy podejście do testowania i plan testów dla całego wydania.</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  Wydanie 2.0 ma dodać płatności kartą i PayPalem. Tester pomaga doprecyzować:
+  jakie scenariusze płatności muszą być obsłużone, jakie są kryteria akceptacji
+  (np. poprawne rozliczenie, obsługa błędów, zwroty), jakie ryzyka są największe
+  (np. bezpieczeństwo, integracja z bramką płatniczą).
+</div>
+
+<h3>Planowanie iteracji</h3>
+<p>
+  <strong>Planowanie iteracji</strong> dotyczy konkretnej iteracji (sprintu) i backlogu tej iteracji.
+</p>
+
+<p>Tester w planowaniu iteracji:</p>
+<ul>
+  <li>analizuje szczegółowo ryzyka związane z user stories,</li>
+  <li>sprawdza, czy historyjki są <strong>testowalne</strong>,</li>
+  <li>dzieli historyjki na zadania testowe (np. przygotowanie danych, napisanie testów, automatyzacja),</li>
+  <li>szacuje pracochłonność zadań testowych,</li>
+  <li>doprecyzowuje aspekty funkcjonalne i niefunkcjonalne (np. wydajność, użyteczność).</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  W sprincie jest user story „Jako użytkownik chcę zresetować hasło”.
+  Tester proponuje zadania: testy pozytywne (poprawny e‑mail), negatywne (zły e‑mail),
+  testy linku resetującego, testy wygasania linku, testy bezpieczeństwa (brak ujawniania,
+  czy e‑mail istnieje w systemie).
+</div>
+
+<hr />
+
+<h2>5.1.3 Kryteria wejścia i kryteria wyjścia</h2>
+
+<p>
+  <strong>Kryteria wejścia</strong> – co musi być spełnione, żeby <em>zacząć</em> daną aktywność (np. testy systemowe).<br />
+  <strong>Kryteria wyjścia</strong> – co musi być spełnione, żeby uznać, że <em>kończymy</em> daną aktywność.
+</p>
+
+<h3>Przykładowe kryteria wejścia</h3>
+<ul>
+  <li>dostępni ludzie, narzędzia, środowiska, dane testowe, budżet, czas,</li>
+  <li>dostępna podstawa testów (wymagania, user stories),</li>
+  <li>określony minimalny poziom jakości (np. przeszły testy dymne).</li>
+</ul>
+
+<h3>Przykładowe kryteria wyjścia</h3>
+<ul>
+  <li>osiągnięty poziom pokrycia testami,</li>
+  <li>liczba otwartych defektów poniżej ustalonego progu,</li>
+  <li>wykonano wszystkie zaplanowane testy,</li>
+  <li>zgłoszono wszystkie wykryte defekty,</li>
+  <li>zautomatyzowano wszystkie testy regresji (jeśli to cel).</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  Kryteria wejścia do testów akceptacyjnych: zakończone testy systemowe, brak defektów krytycznych,
+  środowisko akceptacyjne gotowe, dane testowe przygotowane.<br />
+  Kryteria wyjścia: wszystkie przypadki testowe wykonane, brak defektów o priorytecie „wysoki”,
+  maksymalnie 5 defektów „średnich”, wszystkie defekty opisane i przekazane do zespołu.
+</div>
+
+<p>
+  W podejściu zwinnym:
+</p>
+<ul>
+  <li><strong>Definition of Done (DoD)</strong> – to w praktyce kryteria wyjścia dla elementu backlogu,</li>
+  <li><strong>Definition of Ready (DoR)</strong> – to kryteria wejścia, żeby w ogóle zacząć pracę nad user story.</li>
+</ul>
+
+<hr />
+
+<h2>5.1.4 Techniki szacowania</h2>
+
+<p>
+  Szacowanie pracochłonności testów to próba odpowiedzi na pytanie:
+  <strong>ile pracy (czasu) potrzebujemy, żeby osiągnąć cele testów</strong>.
+  Zawsze opiera się na założeniach i zawsze jest obarczone błędem.
+</p>
+
+<p>
+  Dla dużych zadań lepiej jest je rozbić na mniejsze elementy – wtedy szacunki są zwykle dokładniejsze.
+</p>
+
+<h3>1. Szacowanie na podstawie proporcji</h3>
+<p>
+  Bazuje na danych historycznych z wcześniejszych projektów w organizacji.
+  Ustalamy typowe proporcje, np. ile pracy idzie na wytwarzanie, a ile na testowanie.
+</p>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  W poprzednim projekcie stosunek pracochłonności wytwarzania do testowania wyniósł 3:2.
+  Jeśli w nowym projekcie wytwarzanie ma zająć 600 osobodni, to testowanie szacujemy na:
+  600 × (2 / 3) = 400 osobodni.
+</div>
+
+<h3>2. Ekstrapolacja</h3>
+<p>
+  Zbieramy dane z bieżącego projektu jak najwcześniej, a potem
+  <strong>przenosimy trend</strong> na przyszłość (często z użyciem prostego modelu matematycznego).
+</p>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  W trzech ostatnich iteracjach testy zajmowały średnio 40 godzin na sprint.
+  Możemy oszacować, że w kolejnym sprincie testy też zajmą około 40 godzin,
+  o ile zakres i zespół są podobne.
+</div>
+
+<h3>3. Szerokopasmowa technika delficka</h3>
+<p>
+  Technika ekspercka, iteracyjna:
+</p>
+<ul>
+  <li>kilku ekspertów niezależnie szacuje nakład pracy,</li>
+  <li>porównuje się wyniki, omawia duże rozbieżności,</li>
+  <li>eksperci ponownie szacują, już z nową wiedzą,</li>
+  <li>powtarzamy, aż do osiągnięcia konsensusu.</li>
+</ul>
+
+<p>
+  Wariantem jest <strong>poker planistyczny</strong> – eksperci używają kart z liczbami
+  (np. ciąg Fibonacciego) i jednocześnie odkrywają swoje szacunki.
+</p>
+
+<h3>4. Szacowanie trójpunktowe</h3>
+<p>
+  Eksperci podają trzy wartości:
+</p>
+<ul>
+  <li><strong>a</strong> – najbardziej optymistyczne oszacowanie,</li>
+  <li><strong>m</strong> – najbardziej prawdopodobne,</li>
+  <li><strong>b</strong> – najbardziej pesymistyczne.</li>
+</ul>
+
+<p>
+  Następnie liczymy:
+</p>
+<ul>
+  <li><strong>E</strong> – szacowana wartość: E = (a + 4 × m + b) / 6</li>
+  <li><strong>SD</strong> – błąd (odchylenie standardowe): SD = (b – a) / 6</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  a = 6, m = 9, b = 18 (osobogodzin).<br />
+  E = (6 + 4 × 9 + 18) / 6 = (6 + 36 + 18) / 6 = 60 / 6 = 10<br />
+  SD = (18 – 6) / 6 = 12 / 6 = 2<br />
+  Czyli szacujemy 10 ± 2 osobogodzin (od 8 do 12).
+</div>
+
+<hr />
+
+<h2>Pytania testowe (styl ISTQB, A–D)</h2>
+
+<div class="question">
+  <p><strong>1. Jaki jest główny cel planu testów?</strong></p>
+  <ul class="answers">
+    <li>A. Opisanie tylko narzędzi używanych w testach.</li>
+    <li>B. Udokumentowanie celów, zasobów i procesów związanych z testowaniem.</li>
+    <li>C. Zastąpienie polityki testów i strategii testów.</li>
+    <li>D. Opisanie wyłącznie harmonogramu wdrożenia produkcyjnego.</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>2. Które z poniższych najlepiej opisuje rolę testera w planowaniu wydań?</strong></p>
+  <ul class="answers">
+    <li>A. Tester planuje wyłącznie testy jednostkowe.</li>
+    <li>B. Tester pisze wyłącznie dokumentację użytkownika.</li>
+    <li>C. Tester współtworzy testowalne user stories, kryteria akceptacji i szacuje pracochłonność testów.</li>
+    <li>D. Tester decyduje samodzielnie o zakresie całego wydania.</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: C</p>
+</div>
+
+<div class="question">
+  <p><strong>3. Co jest przykładem kryterium wejścia do testów systemowych?</strong></p>
+  <ul class="answers">
+    <li>A. Wszystkie defekty zostały naprawione.</li>
+    <li>B. Środowisko testowe jest dostępne i przeszły testy dymne.</li>
+    <li>C. Użytkownicy końcowi zaakceptowali system.</li>
+    <li>D. Zespół zakończył retrospektywę sprintu.</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>4. W podejściu zwinnym „Definition of Done” odpowiada głównie:</strong></p>
+  <ul class="answers">
+    <li>A. Kryteriom wejścia dla projektu.</li>
+    <li>B. Kryteriom wyjścia dla elementu backlogu.</li>
+    <li>C. Planowi testów dla całego wydania.</li>
+    <li>D. Rejestrowi ryzyk produktowych.</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>5. Która technika szacowania opiera się na danych historycznych i proporcjach?</strong></p>
+  <ul class="answers">
+    <li>A. Ekstrapolacja.</li>
+    <li>B. Szerokopasmowa technika delficka.</li>
+    <li>C. Szacowanie trójpunktowe.</li>
+    <li>D. Szacowanie na podstawie proporcji.</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: D</p>
+</div>
+
+<div class="question">
+  <p><strong>6. W szacowaniu trójpunktowym wartości a, m, b oznaczają odpowiednio:</strong></p>
+  <ul class="answers">
+    <li>A. Średnią, medianę i odchylenie standardowe.</li>
+    <li>B. Najbardziej optymistyczne, najbardziej prawdopodobne i najbardziej pesymistyczne oszacowanie.</li>
+    <li>C. Minimalny, średni i maksymalny budżet projektu.</li>
+    <li>D. Liczbę defektów krytycznych, poważnych i drobnych.</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>7. Które stwierdzenie o szerokopasmowej technice delfickiej jest prawdziwe?</strong></p>
+  <ul class="answers">
+    <li>A. Szacunki są wykonywane tylko przez jednego eksperta.</li>
+    <li>B. Eksperci szacują niezależnie, a następnie iteracyjnie zbliżają się do konsensusu.</li>
+    <li>C. Technika ta nie dopuszcza żadnej dyskusji między ekspertami.</li>
+    <li>D. Jest to technika wyłącznie dla projektów kaskadowych.</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>8. Co może być akceptowalnym kryterium wyjścia z testów?</strong></p>
+  <ul class="answers">
+    <li>A. Przekroczenie budżetu lub terminu, jeśli interesariusze akceptują ryzyko.</li>
+    <li>B. Brak jakichkolwiek defektów w systemie.</li>
+    <li>C. Wykonanie tylko testów dymnych.</li>
+    <li>D. Zakończenie implementacji wszystkich funkcji bez testów.</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: A</p>
+</div>
+
+<hr />
+
+<p class="note">
+  Możesz ten plik zapisać jako <code>5_1_planowanie_testow.html</code> i otworzyć w przeglądarce.
+</p>
+
+
 
 </div>
 </script>
