@@ -1828,6 +1828,177 @@ Dopiero potem programista implementuje funkcję resetu hasła.
   </ul>
   <p class="correct">Poprawna odpowiedź: B</p>
 </div>
+<h2>5.2.3 Analiza ryzyka produktowego</h2>
+
+<p>
+  Celem analizy ryzyka produktowego jest zdobycie wiedzy o ryzykach związanych z produktem
+  i wykorzystanie jej do takiego zaplanowania testów, aby <strong>zminimalizować ryzyko resztkowe</strong>.
+</p>
+
+<p>
+  Analizę ryzyka warto rozpocząć jak najwcześniej w cyklu wytwarzania. Obejmuje ona dwa główne kroki:
+</p>
+
+<h3>1. Identyfikacja ryzyka</h3>
+<p>
+  Polega na stworzeniu możliwie pełnej listy ryzyk. Interesariusze mogą korzystać z różnych technik:
+</p>
+<ul>
+  <li>burza mózgów,</li>
+  <li>warsztaty,</li>
+  <li>wywiady,</li>
+  <li>diagramy przyczynowo‑skutkowe.</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  Podczas warsztatu z zespołem dev + QA + biznes pojawia się lista ryzyk:
+  błędne obliczenia, awarie przy dużym obciążeniu, podatności bezpieczeństwa,
+  nieintuicyjny interfejs, brak obsługi błędów API.
+</div>
+
+<h3>2. Ocena ryzyka</h3>
+<p>
+  Ocenianie ryzyka obejmuje:
+</p>
+<ul>
+  <li>klasyfikację ryzyk,</li>
+  <li>ustalenie prawdopodobieństwa, wpływu i poziomu ryzyka,</li>
+  <li>nadanie priorytetów,</li>
+  <li>zaproponowanie sposobów postępowania.</li>
+</ul>
+
+<p>
+  Klasyfikacja pomaga dobrać odpowiednie działania łagodzące — ryzyka z tej samej kategorii
+  często można obsłużyć podobnymi metodami.
+</p>
+
+<h3>Metody oceny ryzyka</h3>
+<ul>
+  <li><strong>Ilościowa</strong> – poziom ryzyka = prawdopodobieństwo × wpływ.</li>
+  <li><strong>Jakościowa</strong> – używa macierzy ryzyka (np. niskie/średnie/wysokie).</li>
+  <li><strong>Mieszana</strong> – łączy oba podejścia.</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  Ryzyko „błędne obliczenia podatku”: prawdopodobieństwo = średnie, wpływ = bardzo wysoki.
+  W macierzy ryzyka otrzymuje priorytet „krytyczne”.
+</div>
+
+<h3>Wpływ analizy ryzyka na testowanie</h3>
+<p>Wyniki analizy ryzyka pomagają ustalić:</p>
+<ul>
+  <li>zakres testów,</li>
+  <li>poziomy i typy testów,</li>
+  <li>techniki testowania i wymagany poziom pokrycia,</li>
+  <li>szacunki pracochłonności,</li>
+  <li>priorytety testów (najpierw obszary o najwyższym ryzyku),</li>
+  <li>dodatkowe działania poza testowaniem (np. przeglądy, analiza statyczna).</li>
+</ul>
+
+<hr />
+
+<h2>5.2.4 Kontrola ryzyka produktowego</h2>
+
+<p>
+  Kontrola ryzyka obejmuje wszystkie działania podejmowane po analizie ryzyka:
+  <strong>łagodzenie ryzyka</strong> oraz <strong>monitorowanie ryzyka</strong>.
+</p>
+
+<h3>Łagodzenie ryzyka</h3>
+<p>
+  Polega na wdrażaniu działań zaproponowanych podczas oceny ryzyka, aby obniżyć jego poziom.
+</p>
+
+<p>Przykładowe działania łagodzące poprzez testowanie:</p>
+<ul>
+  <li>przydzielenie testerów z odpowiednimi kompetencjami,</li>
+  <li>zapewnienie odpowiedniego poziomu niezależności testowania,</li>
+  <li>przeglądy i analiza statyczna,</li>
+  <li>dobór właściwych technik testowania i poziomów pokrycia,</li>
+  <li>wybór typów testów zgodnych z charakterystyką ryzyka (np. wydajność, bezpieczeństwo),</li>
+  <li>testowanie dynamiczne, w tym regresja.</li>
+</ul>
+
+<h3>Monitorowanie ryzyka</h3>
+<p>
+  Celem monitorowania jest sprawdzenie, czy działania łagodzące działają,
+  oraz identyfikacja nowych ryzyk.
+</p>
+
+<h3>Możliwe decyzje po analizie ryzyka</h3>
+<ul>
+  <li><strong>Łagodzenie</strong> – np. dodatkowe testy, przeglądy, automatyzacja.</li>
+  <li><strong>Akceptacja</strong> – jeśli koszt łagodzenia jest większy niż potencjalna szkoda.</li>
+  <li><strong>Przeniesienie</strong> – np. na dostawcę zewnętrznego.</li>
+  <li><strong>Plany awaryjne</strong> – co robimy, jeśli ryzyko jednak wystąpi.</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  Ryzyko: „awaria przy dużym obciążeniu”.  
+  Działania: testy wydajnościowe, monitoring, plan awaryjny (auto‑skalowanie).
+</div>
+
+<hr />
+
+<h2>Pytania testowe (A–D)</h2>
+
+<div class="question">
+  <p><strong>1. Co obejmuje analiza ryzyka produktowego?</strong></p>
+  <ul class="answers">
+    <li>A. Tylko identyfikację ryzyka</li>
+    <li>B. Tylko ocenę ryzyka</li>
+    <li>C. Identyfikację i ocenę ryzyka</li>
+    <li>D. Wyłącznie testowanie regresji</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: C</p>
+</div>
+
+<div class="question">
+  <p><strong>2. Która metoda oceny ryzyka wykorzystuje macierz ryzyka?</strong></p>
+  <ul class="answers">
+    <li>A. Ilościowa</li>
+    <li>B. Jakościowa</li>
+    <li>C. Statystyczna</li>
+    <li>D. Automatyczna</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>3. Co jest przykładem działania łagodzącego ryzyko?</strong></p>
+  <ul class="answers">
+    <li>A. Ignorowanie ryzyka</li>
+    <li>B. Dobór odpowiednich technik testowania</li>
+    <li>C. Zmiana nazwy projektu</li>
+    <li>D. Zmniejszenie liczby testerów</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>4. Co jest celem monitorowania ryzyka?</strong></p>
+  <ul class="answers">
+    <li>A. Zwiększenie liczby defektów</li>
+    <li>B. Sprawdzenie skuteczności działań łagodzących i wykrycie nowych ryzyk</li>
+    <li>C. Zastąpienie testów manualnych automatyzacją</li>
+    <li>D. Zmiana priorytetów wymagań</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>5. Który wariant NIE należy do kontroli ryzyka?</strong></p>
+  <ul class="answers">
+    <li>A. Akceptacja ryzyka</li>
+    <li>B. Przeniesienie ryzyka</li>
+    <li>C. Plany awaryjne</li>
+    <li>D. Zwiększenie liczby błędów w systemie</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: D</p>
+</div>
 
 
 </div>
