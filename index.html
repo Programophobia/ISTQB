@@ -1599,6 +1599,235 @@ Dopiero potem programista implementuje funkcję resetu hasła.
   Możesz ten plik zapisać jako <code>5_1_planowanie_testow.html</code> i otworzyć w przeglądarce.
 </p>
 
+<h2>5.1.5 Ustalanie priorytetów przypadków testowych</h2>
+
+<p>
+  Po stworzeniu przypadków testowych i zestawów testowych trzeba ustalić
+  <strong>kolejność ich wykonywania</strong>. Priorytety zależą od kilku strategii.
+</p>
+
+<h3>Strategie ustalania priorytetów</h3>
+
+<ul>
+  <li><strong>Na podstawie ryzyka</strong> – pierwsze wykonujemy testy pokrywające największe ryzyka.</li>
+  <li><strong>Na podstawie pokrycia</strong> – pierwsze idą testy dające największe pokrycie (np. kodu).</li>
+  <li><strong>Na podstawie wymagań</strong> – kolejność wynika z priorytetów wymagań ustalonych przez interesariuszy.</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  W systemie bankowym największe ryzyko to błędne przelewy i bezpieczeństwo logowania.
+  Testy tych obszarów wykonujemy jako pierwsze.
+</div>
+
+<p>
+  Czasem nie da się wykonać testów dokładnie według priorytetów, np. gdy:
+</p>
+<ul>
+  <li>test o wyższym priorytecie zależy od testu o niższym,</li>
+  <li>zasoby (środowisko, narzędzia, ludzie) są dostępne tylko w określonym czasie.</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład zależności:</strong><br />
+  Test „złożenie zamówienia” wymaga wcześniejszego przetestowania rejestracji użytkownika.
+</div>
+
+<hr />
+
+<h2>5.1.6 Piramida testów</h2>
+
+<p>
+  <strong>Piramida testów</strong> pokazuje, że różne testy mają różną szczegółowość,
+  czas wykonania i poziom izolacji.
+</p>
+
+<ul>
+  <li>Na dole – <strong>testy modułowe</strong>: szybkie, tanie, liczne.</li>
+  <li>Wyżej – <strong>testy integracyjne</strong>: wolniejsze, bardziej złożone.</li>
+  <li>Na górze – <strong>testy end‑to‑end</strong>: najwolniejsze, obejmują szeroki zakres.</li>
+</ul>
+
+<div class="example">
+  <strong>Przykład:</strong><br />
+  W modelu Cohna: testy modułowe → testy usług → testy interfejsu użytkownika.
+</div>
+
+<p>
+  Idea: <strong>dużo tanich testów nisko, mało drogich testów wysoko</strong>.
+</p>
+
+<hr />
+
+<h2>5.1.7 Kwadranty testowe</h2>
+
+<p>
+  Kwadranty testowe (Marick, Crispin) grupują testy według:
+</p>
+<ul>
+  <li>celu: <strong>biznesowy</strong> lub <strong>technologiczny</strong>,</li>
+  <li>funkcji: <strong>wspieranie zespołu</strong> lub <strong>krytyka produktu</strong>.</li>
+</ul>
+
+<h3>Q1 – cel technologiczny, wspieranie zespołu</h3>
+<ul>
+  <li>Testy modułowe, testy integracji modułów.</li>
+  <li>Automatyczne, w CI.</li>
+</ul>
+
+<h3>Q2 – cel biznesowy, wspieranie zespołu</h3>
+<ul>
+  <li>Testy funkcjonalne, testy oparte na user stories, prototypy UX, testy API.</li>
+  <li>Sprawdzają kryteria akceptacji.</li>
+</ul>
+
+<h3>Q3 – cel biznesowy, krytyka produktu</h3>
+<ul>
+  <li>Testowanie eksploracyjne, użyteczność, UAT.</li>
+  <li>Manualne, nastawione na użytkownika.</li>
+</ul>
+
+<h3>Q4 – cel technologiczny, krytyka produktu</h3>
+<ul>
+  <li>Testy niefunkcjonalne (wydajność, bezpieczeństwo), testy dymne.</li>
+  <li>Często automatyczne.</li>
+</ul>
+
+<hr />
+
+<h2>5.2 Zarządzanie ryzykiem</h2>
+
+<p>
+  Zarządzanie ryzykiem pomaga organizacji zwiększyć szansę osiągnięcia celów
+  i poprawić jakość produktów.
+</p>
+
+<p>Obejmuje:</p>
+<ul>
+  <li><strong>analizę ryzyka</strong> – identyfikacja i ocena,</li>
+  <li><strong>kontrolę ryzyka</strong> – łagodzenie i monitorowanie.</li>
+</ul>
+
+<p>
+  Jeśli testowanie opiera się na ryzyku, mówimy o
+  <strong>testowaniu opartym na ryzyku</strong>.
+</p>
+
+<hr />
+
+<h2>5.2.1 Definicja i atrybuty ryzyka</h2>
+
+<p>
+  <strong>Ryzyko</strong> to potencjalne zdarzenie, które może mieć negatywny skutek.
+</p>
+
+<p>Opisują je dwa parametry:</p>
+<ul>
+  <li><strong>Prawdopodobieństwo</strong> – szansa, że wystąpi.</li>
+  <li><strong>Wpływ</strong> – jak duże szkody spowoduje.</li>
+</ul>
+
+<p>
+  Poziom ryzyka = kombinacja prawdopodobieństwa i wpływu.
+</p>
+
+<hr />
+
+<h2>5.2.2 Ryzyka projektowe i produktowe</h2>
+
+<h3>Ryzyka projektowe</h3>
+<p>Związane z realizacją projektu, np.:</p>
+<ul>
+  <li>opóźnienia, złe szacunki, cięcia budżetu,</li>
+  <li>brak kompetencji, konflikty, słaba komunikacja,</li>
+  <li>problemy techniczne, rozszerzanie zakresu,</li>
+  <li>problemy z dostawcami.</li>
+</ul>
+
+<h3>Ryzyka produktowe</h3>
+<p>Związane z jakością produktu, np.:</p>
+<ul>
+  <li>błędne funkcjonalności, awarie, złe obliczenia,</li>
+  <li>niska wydajność, słabe UX, podatności bezpieczeństwa.</li>
+</ul>
+
+<p>Konsekwencje mogą być poważne: utrata reputacji, koszty, szkody, a nawet zagrożenie życia.</p>
+
+<hr />
+
+<h2>5.2.3 Analiza ryzyka produktowego</h2>
+
+<p>
+  Celem analizy ryzyka produktowego jest ustalenie:
+</p>
+<ul>
+  <li>jakie ryzyka istnieją,</li>
+  <li>jak duże są,</li>
+  <li>jak wpływają na priorytety testów.</li>
+</ul>
+
+<p>
+  Na tej podstawie decydujemy, co testować intensywniej, a co mniej.
+</p>
+
+<hr />
+
+<h2>Pytania testowe (A–D)</h2>
+
+<div class="question">
+  <p><strong>1. Która strategia priorytetyzacji testów wykorzystuje analizę ryzyka?</strong></p>
+  <ul class="answers">
+    <li>A. Na podstawie wymagań</li>
+    <li>B. Na podstawie pokrycia</li>
+    <li>C. Na podstawie ryzyka</li>
+    <li>D. Alfabetyczna</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: C</p>
+</div>
+
+<div class="question">
+  <p><strong>2. Co przedstawia piramida testów?</strong></p>
+  <ul class="answers">
+    <li>A. Harmonogram testów</li>
+    <li>B. Poziomy szczegółowości i automatyzacji testów</li>
+    <li>C. Listę narzędzi testowych</li>
+    <li>D. Kolejność wdrożeń</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>3. Który kwadrant obejmuje testy eksploracyjne?</strong></p>
+  <ul class="answers">
+    <li>A. Q1</li>
+    <li>B. Q2</li>
+    <li>C. Q3</li>
+    <li>D. Q4</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: C</p>
+</div>
+
+<div class="question">
+  <p><strong>4. Co jest przykładem ryzyka projektowego?</strong></p>
+  <ul class="answers">
+    <li>A. Błędne obliczenia w systemie</li>
+    <li>B. Opóźnienia w dostarczaniu produktów pracy</li>
+    <li>C. Zbyt długi czas odpowiedzi aplikacji</li>
+    <li>D. Podatność na ataki</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
+
+<div class="question">
+  <p><strong>5. Jakie dwa parametry opisują ryzyko?</strong></p>
+  <ul class="answers">
+    <li>A. Koszt i czas</li>
+    <li>B. Prawdopodobieństwo i wpływ</li>
+    <li>C. Liczba defektów i pokrycie</li>
+    <li>D. Zasięg i liczba użytkowników</li>
+  </ul>
+  <p class="correct">Poprawna odpowiedź: B</p>
+</div>
 
 
 </div>
